@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>마위다 — 마운자로·위고비 맞춤 다이어트 코칭</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --gray-50: #f9f9f9;
+      --gray-100: #f0f0f0;
+      --gray-200: #e0e0e0;
+      --gray-400: #9e9e9e;
+      --gray-600: #555;
+      --gray-800: #222;
+      --accent: #111;
+      --green: #16a34a;
+      --green-light: #dcfce7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ──────────────────────────────
+       NAV
+    ────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      background: var(--black);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.75; }
+
+    /* ──────────────────────────────
+       HERO
+    ────────────────────────────── */
+    .hero {
+      padding: 160px 48px 140px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      margin-bottom: 28px;
+    }
+
+    .hero-title {
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+
+    .hero-typing-wrap {
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 600;
+      color: var(--gray-600);
+      margin-bottom: 48px;
+      min-height: 60px;
+    }
+
+    .typing-text {
+      display: inline;
+      border-right: 2px solid var(--black);
+      padding-right: 2px;
+      animation: blink 0.7s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: var(--black); }
+      50% { border-color: transparent; }
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--black);
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.8; transform: translateY(-1px); }
+
+    .btn-secondary {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-600);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gray-200);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    .btn-secondary:hover { color: var(--black); }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 72px;
+      padding-top: 40px;
+      border-top: 1px solid var(--gray-100);
+      flex-wrap: wrap;
+    }
+
+    .hero-stat-item {}
+    .hero-stat-num {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    /* ──────────────────────────────
+       SECTION COMMON
+    ────────────────────────────── */
+    section { padding: 120px 48px; }
+
+    .section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 16px;
+      color: var(--gray-600);
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* fade-in animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ──────────────────────────────
+       PROBLEM
+    ────────────────────────────── */
+    .problem-section { background: var(--gray-50); }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 56px;
+      text-align: left;
+    }
+
+    .problem-card {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 20px;
+      padding: 32px 28px;
+    }
+
+    .problem-q {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .problem-a {
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.65;
+    }
+
+    .problem-a strong {
+      color: var(--black);
+      font-weight: 700;
+    }
+
+    /* ──────────────────────────────
+       DIFFERENCE
+    ────────────────────────────── */
+    .diff-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 56px;
+      border: 1px solid var(--gray-100);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .diff-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 32px 36px;
+      border-bottom: 1px solid var(--gray-100);
+      transition: background 0.2s;
+    }
+    .diff-item:last-child { border-bottom: none; }
+    .diff-item:hover { background: var(--gray-50); }
+
+    .diff-num {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--gray-200);
+      width: 28px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+
+    .diff-list { text-align: left; }
+    .diff-content {}
+    .diff-title {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
+    }
+    .diff-desc {
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.65;
+    }
+
+    /* ──────────────────────────────
+       RESULTS (InBody stats)
+    ────────────────────────────── */
+    .results-section { background: var(--black); color: var(--white); }
+    .results-section .section-title { color: var(--white); }
+    .results-section .section-desc { color: rgba(255,255,255,0.55); }
+    .results-section .section-tag { color: rgba(255,255,255,0.35); }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 56px;
+      text-align: left;
+    }
+
+    .result-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 32px 28px;
+      transition: background 0.2s;
+    }
+    .result-card:hover { background: rgba(255,255,255,0.08); }
+
+    .result-period {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+    }
+
+    .result-main-stat {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .result-main-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 24px;
+    }
+
+    .result-sub-stats {
+      display: flex;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      flex-wrap: wrap;
+    }
+
+    .result-sub-item {}
+    .result-sub-num {
+      font-size: 15px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.85);
+      white-space: nowrap;
+    }
+    .result-sub-num .down { color: #4ade80; }
+    .result-sub-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 2px;
+    }
+
+    .result-note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 16px;
+      font-style: italic;
+    }
+
+    /* ──────────────────────────────
+       REVIEWS (auto-scroll)
+    ────────────────────────────── */
+    .reviews-section { overflow: hidden; padding: 120px 0; }
+    .reviews-section .section-inner { padding: 0 48px; }
+    .reviews-header { margin-bottom: 56px; padding: 0 48px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center; }
+
+    .reviews-track-wrap {
+      position: relative;
+      overflow: hidden;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+      height: 520px;
+    }
+
+    .reviews-track {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      animation: scrollUp 30s linear infinite;
+      padding: 0 48px;
+    }
+    .reviews-track:hover { animation-play-state: paused; }
+
+    @keyframes scrollUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-50%); }
+    }
+
+    .review-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-radius: 16px;
+      padding: 24px 28px;
+      max-width: 500px;
+      flex-shrink: 0;
+    }
+
+    .review-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--gray-800);
+      margin-bottom: 16px;
+    }
+
+    .review-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .review-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray-600);
+      flex-shrink: 0;
+    }
+
+    .review-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--black);
+    }
+    .review-detail {
+      font-size: 12px;
+      color: var(--gray-400);
+    }
+
+    /* ──────────────────────────────
+       PROCESS
+    ────────────────────────────── */
+    .process-section { background: var(--gray-50); }
+
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 56px;
+      position: relative;
+      text-align: left;
+    }
+
+    .process-step {
+      display: flex;
+      gap: 32px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--gray-100);
+      position: relative;
+    }
+    .process-step:last-child { border-bottom: none; }
+
+    .process-step-num {
+      font-size: 40px;
+      font-weight: 900;
+      color: var(--gray-100);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 52px;
+      text-align: right;
+    }
+
+    .process-step-content { padding-top: 4px; }
+    .process-step-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+    .process-step-desc {
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.65;
+    }
+
+    /* ──────────────────────────────
+       COACH
+    ────────────────────────────── */
+    .coach-card {
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+      margin-top: 56px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-radius: 24px;
+      padding: 48px;
+      text-align: left;
+    }
+
+    .coach-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--gray-600);
+      flex-shrink: 0;
+    }
+
+    .coach-name {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .coach-title {
+      font-size: 13px;
+      color: var(--gray-400);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .coach-desc {
+      font-size: 15px;
+      color: var(--gray-600);
+      line-height: 1.75;
+      margin-bottom: 24px;
+      max-width: 520px;
+    }
+
+    .coach-stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 24px;
+    }
+
+    .coach-stat-num {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .coach-stat-label {
+      font-size: 12px;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    .coach-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .coach-tag {
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      color: var(--gray-600);
+      padding: 6px 14px;
+      border-radius: 50px;
+    }
+
+    @media (max-width: 640px) {
+      .coach-card { flex-direction: column; gap: 28px; padding: 32px 24px; }
+    }
+
+    /* ──────────────────────────────
+       CTA
+    ────────────────────────────── */
+    .cta-section {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 140px 48px;
+    }
+
+    .cta-title {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .cta-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .btn-kakao {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #FEE500;
+      color: #3C1E1E;
+      font-size: 16px;
+      font-weight: 800;
+      padding: 18px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-kakao:hover { opacity: 0.9; transform: translateY(-2px); }
+
+    .cta-note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 20px;
+    }
+
+    /* ──────────────────────────────
+       FOOTER
+    ────────────────────────────── */
+    footer {
+      padding: 40px 48px;
+      border-top: 1px solid var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--black);
+    }
+
+    .footer-text {
+      font-size: 12px;
+      color: var(--gray-400);
+    }
+
+    /* ──────────────────────────────
+       MOBILE
+    ────────────────────────────── */
+    @media (max-width: 860px) {
+      nav { padding: 0 24px; }
+      .hero { padding: 120px 24px 100px; }
+      section { padding: 100px 24px; }
+      .reviews-section { padding: 100px 0; }
+      .reviews-header { padding: 0 24px; }
+      .reviews-track { padding: 0 24px; }
+      .cta-section { padding: 100px 24px; }
+      footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    @media (max-width: 860px) {
+      .results-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .problem-grid { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 28px; }
+      .diff-item { padding: 24px 24px; }
+      .hero-cta-group { flex-direction: column; align-items: center; }
+      .process-step-num { font-size: 28px; width: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">마위다</a>
+    <a href="https://open.kakao.com/o/sQRqa7oi" target="_blank" class="nav-cta">무료 상담 받기</a>
+  </nav>
+
+  <!-- HERO -->
+  <section style="padding-top: 0; padding-bottom: 0;">
+    <div class="hero">
+      <p class="hero-badge fade-up">마운자로 · 위고비 맞춤 코칭</p>
+      <h1 class="hero-title fade-up">주사 맞고 있는데,<br>왜 나만 안 빠질까?</h1>
+      <div class="hero-typing-wrap fade-up">
+        <span class="typing-text" id="typing"></span>
+      </div>
+      <div class="hero-cta-group fade-up">
+        <a href="https://open.kakao.com/o/sQRqa7oi" target="_blank" class="btn-primary">
+          지금 무료 상담 받기
+        </a>
+        <a href="#results" class="btn-secondary">실제 변화 보기</a>
+      </div>
+      <div class="hero-stats fade-up">
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">−7.3kg</div>
+          <div class="hero-stat-label">체지방 감량 (1개월)</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">−14.1kg</div>
+          <div class="hero-stat-label">체지방 감량 (3개월)</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">−19.9kg</div>
+          <div class="hero-stat-label">체지방 감량 (4개월)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem-section">
+    <div class="section-inner">
+      <p class="section-tag fade-up">Problem</p>
+      <h2 class="section-title fade-up">주사 맞는데도<br>결과가 다른 이유</h2>
+      <p class="section-desc fade-up">약이 식욕을 억제해줘도, 무엇을 먹고 어떻게 움직여야 하는지 모르면 몸은 달라지지 않습니다.</p>
+      <div class="problem-grid">
+        <div class="problem-card fade-up">
+          <p class="problem-q">식욕이 줄었는데 살이 안 빠진다</p>
+          <p class="problem-a">주사는 식욕만 줄여줄 뿐입니다. <strong>뭘 먹고 얼마나 먹는지</strong>가 맞지 않으면 체중은 그대로입니다.</p>
+        </div>
+        <div class="problem-card fade-up">
+          <p class="problem-q">살은 빠지는데 몸이 처진다</p>
+          <p class="problem-a">단순히 굶으면 <strong>근육부터 빠집니다</strong>. 체지방을 태우려면 단백질 섭취와 운동이 함께 가야 합니다.</p>
+        </div>
+        <div class="problem-card fade-up">
+          <p class="problem-q">주사 끊으면 다시 원래대로</p>
+          <p class="problem-a">약에 의존하기만 하면 <strong>식습관 자체가 바뀌지 않습니다</strong>. 먹는 패턴이 바뀌어야 유지가 됩니다.</p>
+        </div>
+        <div class="problem-card fade-up">
+          <p class="problem-q">뭘 먹어야 할지 막막하다</p>
+          <p class="problem-a">운동도 식단도 검색하면 정보가 넘치지만 <strong>내 몸에 맞는 기준</strong>이 없으면 아무 소용 없습니다.</p>
+        </div>
+        <div class="problem-card fade-up">
+          <p class="problem-q">혼자 하면 며칠 못 가 흐지부지</p>
+          <p class="problem-a"><strong>혼자서는 무너지는 게 당연합니다.</strong> 기록하고 점검해주는 사람이 있어야 습관이 자리 잡힙니다.</p>
+        </div>
+        <div class="problem-card fade-up">
+          <p class="problem-q">부작용이 너무 심해서 못 먹겠다</p>
+          <p class="problem-a">메스꺼움, 구토, 피로감 — <strong>먹는 순서와 종류만 바꿔도</strong> 부작용 없이 먹을 수 있는 방법이 있습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENCE -->
+  <section>
+    <div class="section-inner">
+      <p class="section-tag fade-up">Difference</p>
+      <h2 class="section-title fade-up">마위다가 다른<br>4가지 이유</h2>
+      <p class="section-desc fade-up">마운자로·위고비 복용자만을 위해 설계된 코칭입니다. 일반 다이어트 방법과는 전혀 다릅니다.</p>
+      <div class="diff-list" style="margin-top: 56px;">
+        <div class="diff-item fade-up">
+          <div class="diff-num">01</div>
+          <div class="diff-content">
+            <p class="diff-title">주사에 맞는 식단 설계</p>
+            <p class="diff-desc">마운자로·위고비 복용 중 나타나는 소화 패턴, 포만감, 부작용에 맞게 식단을 설계합니다. 일반 다이어트 식단이 아닙니다.</p>
+          </div>
+        </div>
+        <div class="diff-item fade-up">
+          <div class="diff-num">02</div>
+          <div class="diff-content">
+            <p class="diff-title">InBody 기반 체성분 분석</p>
+            <p class="diff-desc">체중계 숫자가 아니라 체지방, 근육량, 내장지방 수치로 변화를 추적합니다. 눈으로 보이는 변화가 달라집니다.</p>
+          </div>
+        </div>
+        <div class="diff-item fade-up">
+          <div class="diff-num">03</div>
+          <div class="diff-content">
+            <p class="diff-title">매주 1:1 점검 & 즉각 피드백</p>
+            <p class="diff-desc">혼자 기록만 하는 게 아닙니다. 매주 식단과 운동 기록을 직접 확인하고 다음 주 계획을 함께 조정합니다.</p>
+          </div>
+        </div>
+        <div class="diff-item fade-up">
+          <div class="diff-num">04</div>
+          <div class="diff-content">
+            <p class="diff-title">약 없이도 유지되는 식습관</p>
+            <p class="diff-desc">코칭 목표는 약에 의존하지 않는 것입니다. 주사를 끊어도 감량한 몸을 유지할 수 있도록 식습관 자체를 바꿉니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results-section" id="results">
+    <div class="section-inner">
+      <p class="section-tag fade-up">Real Results</p>
+      <h2 class="section-title fade-up">실제 수치로<br>증명된 변화</h2>
+      <p class="section-desc fade-up">마운자로·위고비 복용 중 코칭을 함께 진행한 회원들의 InBody 실측 결과입니다.</p>
+      <div class="results-grid">
+
+        <div class="result-card fade-up">
+          <p class="result-period">25일</p>
+          <p class="result-main-stat">−2.9kg</p>
+          <p class="result-main-label">체중 감소 (88.1→85.2)</p>
+          <div class="result-sub-stats">
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−4.8kg</span></div>
+              <div class="result-sub-label">체지방</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">+1.3kg</span></div>
+              <div class="result-sub-label">골격근</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−4단계</span></div>
+              <div class="result-sub-label">내장지방</div>
+            </div>
+          </div>
+          <p class="result-note">체지방률 43.9% → 39.8%</p>
+        </div>
+
+        <div class="result-card fade-up">
+          <p class="result-period">40일</p>
+          <p class="result-main-stat">−5.8kg</p>
+          <p class="result-main-label">체중 감소 (81.7→75.9)</p>
+          <div class="result-sub-stats">
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−7.3kg</span></div>
+              <div class="result-sub-label">체지방</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">+0.9kg</span></div>
+              <div class="result-sub-label">골격근</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−4단계</span></div>
+              <div class="result-sub-label">내장지방</div>
+            </div>
+          </div>
+          <p class="result-note">체지방률 48.5% → 42.5%</p>
+        </div>
+
+        <div class="result-card fade-up">
+          <p class="result-period">2개월</p>
+          <p class="result-main-stat">−8.4kg</p>
+          <p class="result-main-label">체중 감소 (88.1→79.7)</p>
+          <div class="result-sub-stats">
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−7.8kg</span></div>
+              <div class="result-sub-label">체지방</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num">−0.4kg</div>
+              <div class="result-sub-label">골격근</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−5단계</span></div>
+              <div class="result-sub-label">내장지방</div>
+            </div>
+          </div>
+          <p class="result-note">체지방률 43.9% → 38.8%</p>
+        </div>
+
+        <div class="result-card fade-up">
+          <p class="result-period">3개월</p>
+          <p class="result-main-stat">−7.7kg</p>
+          <p class="result-main-label">체중 감소 (86.6→78.9)</p>
+          <div class="result-sub-stats">
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−7.3kg</span></div>
+              <div class="result-sub-label">체지방</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num">−0.2kg</div>
+              <div class="result-sub-label">골격근</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−4단계</span></div>
+              <div class="result-sub-label">내장지방</div>
+            </div>
+          </div>
+          <p class="result-note">체지방률 37.7% → 32.1%</p>
+        </div>
+
+        <div class="result-card fade-up">
+          <p class="result-period">3개월</p>
+          <p class="result-main-stat">−12.5kg</p>
+          <p class="result-main-label">체중 감소 (88.1→75.6)</p>
+          <div class="result-sub-stats">
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−11.2kg</span></div>
+              <div class="result-sub-label">체지방</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num">−0.8kg</div>
+              <div class="result-sub-label">골격근</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−7단계</span></div>
+              <div class="result-sub-label">내장지방</div>
+            </div>
+          </div>
+          <p class="result-note">체지방률 43.9% → 36.4%</p>
+        </div>
+
+        <div class="result-card fade-up">
+          <p class="result-period">3개월</p>
+          <p class="result-main-stat">−12.8kg</p>
+          <p class="result-main-label">체중 감소 (81.7→68.9)</p>
+          <div class="result-sub-stats">
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−14.1kg</span></div>
+              <div class="result-sub-label">체지방</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">+0.6kg</span></div>
+              <div class="result-sub-label">골격근</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−8단계</span></div>
+              <div class="result-sub-label">내장지방</div>
+            </div>
+          </div>
+          <p class="result-note">체지방률 48.5% → 37.0%</p>
+        </div>
+
+        <div class="result-card fade-up">
+          <p class="result-period">4개월</p>
+          <p class="result-main-stat">−15.4kg</p>
+          <p class="result-main-label">체중 감소 (88.1→72.7)</p>
+          <div class="result-sub-stats">
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−14.2kg</span></div>
+              <div class="result-sub-label">체지방</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num">−0.7kg</div>
+              <div class="result-sub-label">골격근</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−9단계</span></div>
+              <div class="result-sub-label">내장지방</div>
+            </div>
+          </div>
+          <p class="result-note">체지방률 43.9% → 33.7%</p>
+        </div>
+
+        <div class="result-card fade-up">
+          <p class="result-period">4개월</p>
+          <p class="result-main-stat">−20.5kg</p>
+          <p class="result-main-label">체중 감소 (99.3→78.8)</p>
+          <div class="result-sub-stats">
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−19.9kg</span></div>
+              <div class="result-sub-label">체지방</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num">−0.5kg</div>
+              <div class="result-sub-label">골격근</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−10단계</span></div>
+              <div class="result-sub-label">내장지방</div>
+            </div>
+          </div>
+          <p class="result-note">체지방률 39.0% → 23.8%</p>
+        </div>
+
+        <div class="result-card fade-up">
+          <p class="result-period">7개월</p>
+          <p class="result-main-stat">−25kg</p>
+          <p class="result-main-label">체중 감소 (99.3→74.3)</p>
+          <div class="result-sub-stats">
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−25.8kg</span></div>
+              <div class="result-sub-label">체지방</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">+0.4kg</span></div>
+              <div class="result-sub-label">골격근</div>
+            </div>
+            <div class="result-sub-item">
+              <div class="result-sub-num"><span class="down">−12단계</span></div>
+              <div class="result-sub-label">내장지방</div>
+            </div>
+          </div>
+          <p class="result-note">체지방률 39.0% → 17.3%</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section">
+    <div class="reviews-header fade-up">
+      <p class="section-tag">Reviews</p>
+      <h2 class="section-title">직접 경험한<br>분들의 이야기</h2>
+    </div>
+    <div class="reviews-track-wrap">
+      <div class="reviews-track" id="reviewsTrack">
+
+        <div class="review-card">
+          <p class="review-text">"주사만 맞으면 다 될 줄 알았는데 3주째 체중이 그대로였어요. 코칭 받고 나서야 내가 뭘 잘못하고 있었는지 알았어요. 지금은 매주 꾸준히 빠지고 있어요."</p>
+          <div class="review-meta">
+            <div class="review-avatar">이</div>
+            <div>
+              <div class="review-name">이**님</div>
+              <div class="review-detail">40대 · 마운자로 복용 중</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <p class="review-text">"부작용이 너무 심해서 포기하려 했는데, 코치님이 먹는 시간이랑 종류만 바꿔봐라 하셨는데 진짜 확 줄었어요. 이런 거 왜 병원에서 안 알려주는지 모르겠어요."</p>
+          <div class="review-meta">
+            <div class="review-avatar">박</div>
+            <div>
+              <div class="review-name">박**님</div>
+              <div class="review-detail">30대 · 위고비 복용 중</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <p class="review-text">"InBody 찍어보니까 체지방이 9키로 넘게 빠진 게 숫자로 나오더라고요. 살만 빠진 게 아니라 근육은 오히려 늘었어요. 처음에는 믿기지 않았어요."</p>
+          <div class="review-meta">
+            <div class="review-avatar">김</div>
+            <div>
+              <div class="review-name">김**님</div>
+              <div class="review-detail">50대 · 3개월 코칭 수료</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <p class="review-text">"혼자 하면 3일도 못 가요. 매주 기록 확인해주시고 뭘 어떻게 바꿔야 하는지 구체적으로 알려주시니까 그냥 따라하게 되더라고요."</p>
+          <div class="review-meta">
+            <div class="review-avatar">최</div>
+            <div>
+              <div class="review-name">최**님</div>
+              <div class="review-detail">40대 · 마운자로 복용 중</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <p class="review-text">"다른 데서 식단 관리 받아봤는데 주사 맞고 있는 걸 전혀 고려를 안 해줬어요. 여기는 주사 맞으면서 어떻게 먹어야 하는지를 완전히 다르게 접근하더라고요."</p>
+          <div class="review-meta">
+            <div class="review-avatar">정</div>
+            <div>
+              <div class="review-name">정**님</div>
+              <div class="review-detail">30대 · 2개월 코칭 수료</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <p class="review-text">"25일에 8키로 넘게 빠졌는데, 그게 다 체지방이었어요. 이전에 굶어서 뺐을 때랑 몸 상태가 완전히 달라요. 피부도 처지지 않고 오히려 탄력이 생겼어요."</p>
+          <div class="review-meta">
+            <div class="review-avatar">한</div>
+            <div>
+              <div class="review-name">한**님</div>
+              <div class="review-detail">40대 · 마운자로 5mg</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <p class="review-text">"주사 끊었을 때 다시 찔까봐 걱정이 제일 컸는데, 코칭하면서 먹는 패턴 자체가 바뀌었어요. 지금 3개월째 유지 중이에요."</p>
+          <div class="review-meta">
+            <div class="review-avatar">윤</div>
+            <div>
+              <div class="review-name">윤**님</div>
+              <div class="review-detail">30대 · 4개월 코칭 수료</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <p class="review-text">"내장지방이 5단계나 줄었다고 하니까 남편이 더 놀라더라고요. 겉으로 보이는 것보다 몸 안이 건강해졌다는 게 더 기뻤어요."</p>
+          <div class="review-meta">
+            <div class="review-avatar">오</div>
+            <div>
+              <div class="review-name">오**님</div>
+              <div class="review-detail">50대 · 3개월 코칭 수료</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <p class="review-text">"솔직히 처음엔 반신반의했어요. 근데 2달 만에 11키로 넘게 빠지고 근육은 그대로인 걸 보고 나서는 그냥 믿고 따라가게 됐어요."</p>
+          <div class="review-meta">
+            <div class="review-avatar">강</div>
+            <div>
+              <div class="review-name">강**님</div>
+              <div class="review-detail">30대 · 위고비 복용 중</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 무한 루프용 복제 (JS가 처리) -->
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process-section">
+    <div class="section-inner">
+      <p class="section-tag fade-up">How It Works</p>
+      <h2 class="section-title fade-up">코칭이 진행되는<br>방식</h2>
+      <p class="section-desc fade-up">복잡하지 않습니다. 지금 맞고 있는 주사에 맞춰 식단과 운동을 함께 조정합니다.</p>
+      <div class="process-steps">
+        <div class="process-step fade-up">
+          <div class="process-step-num">1</div>
+          <div class="process-step-content">
+            <p class="process-step-title">카카오 무료 상담</p>
+            <p class="process-step-desc">현재 복용 중인 약, 식습관, 목표를 간단히 얘기해주세요. 맞는 코칭인지 먼저 확인합니다. 부담 없이 물어보세요.</p>
+          </div>
+        </div>
+        <div class="process-step fade-up">
+          <div class="process-step-num">2</div>
+          <div class="process-step-content">
+            <p class="process-step-title">InBody 체성분 측정</p>
+            <p class="process-step-desc">시작 전 InBody를 측정합니다. 체중이 아닌 체지방·근육량·내장지방 기준으로 목표를 설정합니다.</p>
+          </div>
+        </div>
+        <div class="process-step fade-up">
+          <div class="process-step-num">3</div>
+          <div class="process-step-content">
+            <p class="process-step-title">개인 맞춤 식단 + 운동 설계</p>
+            <p class="process-step-desc">마운자로·위고비 복용 단계와 부작용 패턴에 맞게 식단을 설계합니다. 무조건 굶는 게 아니라 잘 먹으면서 빠지는 방법입니다.</p>
+          </div>
+        </div>
+        <div class="process-step fade-up">
+          <div class="process-step-num">4</div>
+          <div class="process-step-content">
+            <p class="process-step-title">매주 1:1 피드백</p>
+            <p class="process-step-desc">매주 기록한 식단과 운동을 직접 점검하고 다음 주 계획을 조정합니다. 혼자 하는 게 아닙니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COACH -->
+  <section>
+    <div class="section-inner">
+      <p class="section-tag fade-up">Coach</p>
+      <h2 class="section-title fade-up">코치 소개</h2>
+      <div class="coach-card fade-up">
+        <div class="coach-photo">김</div>
+        <div class="coach-info">
+          <p class="coach-name">김주영 코치</p>
+          <p class="coach-title">한국체육대학교 학사·석사 (전공: 생체역학)</p>
+          <p class="coach-desc">마운자로·위고비 복용 중인 분들이 약의 효과를 최대한 살릴 수 있도록 식단과 운동을 함께 설계합니다. 단순히 살을 빼는 게 아니라, 주사를 끊어도 유지되는 몸을 만드는 것이 목표입니다.</p>
+          <div class="coach-stats">
+            <div class="coach-stat-item">
+              <div class="coach-stat-num">3,000명+</div>
+              <div class="coach-stat-label">누적 회원</div>
+            </div>
+          </div>
+          <div class="coach-tags">
+            <span class="coach-tag">체지방 감량 전문</span>
+            <span class="coach-tag">근손실 방지 코칭</span>
+            <span class="coach-tag">마운자로·위고비 복용자 특화</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2 class="cta-title fade-up">지금 주사 맞고 있다면,<br>코칭이 결과를 바꿉니다</h2>
+    <p class="cta-desc fade-up">무료 상담으로 시작하세요. 지금 맞는 약과 내 상태에 맞는<br>방법을 먼저 확인해드립니다.</p>
+    <a href="https://open.kakao.com/o/sQRqa7oi" target="_blank" class="btn-kakao fade-up">
+      카카오로 무료 상담 받기
+    </a>
+    <p class="cta-note fade-up">응답 시간 평균 10분 이내 · 부담 없이 문의하세요</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">마위다</div>
+    <div class="footer-text">마운자로·위고비 복용자 맞춤 다이어트 코칭</div>
+  </footer>
+
+  <script>
+    // ── TYPING ANIMATION ──
+    const phrases = [
+      "마운자로 맞은 지 한 달, 체중은 그대로입니다",
+      "식욕은 줄었는데 왜 살이 안 빠지는 걸까요?",
+      "주사 끊으면 다시 찔까봐 불안합니다",
+      "부작용이 심해서 뭘 먹어야 할지 모르겠어요",
+    ];
+    let pi = 0, ci = 0, deleting = false;
+    const el = document.getElementById('typing');
+
+    function tick() {
+      const phrase = phrases[pi];
+      if (!deleting) {
+        el.textContent = phrase.slice(0, ++ci);
+        if (ci === phrase.length) {
+          deleting = true;
+          setTimeout(tick, 2200);
+          return;
+        }
+        setTimeout(tick, 55);
+      } else {
+        el.textContent = phrase.slice(0, --ci);
+        if (ci === 0) {
+          deleting = false;
+          pi = (pi + 1) % phrases.length;
+          setTimeout(tick, 400);
+          return;
+        }
+        setTimeout(tick, 28);
+      }
+    }
+    setTimeout(tick, 800);
+
+    // ── FADE-UP ON SCROLL ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // ── REVIEWS INFINITE SCROLL ──
+    const track = document.getElementById('reviewsTrack');
+    const cards = Array.from(track.children);
+    cards.forEach(c => track.appendChild(c.cloneNode(true)));
+  </script>
+</body>
+</html>
