@@ -396,22 +396,29 @@
     .reviews-header { margin-bottom: 56px; padding: 0 48px; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center; }
 
     .reviews-track-wrap {
-      position: relative;
+      display: flex;
+      gap: 16px;
+      height: 520px;
+      padding: 0 48px;
+    }
+
+    .reviews-col {
+      flex: 1;
       overflow: hidden;
       mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
-      height: 520px;
     }
 
     .reviews-track {
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 16px;
-      animation: scrollUp 30s linear infinite;
-      padding: 0 48px;
+      animation: scrollUp 16s linear infinite;
     }
-    .reviews-track:hover { animation-play-state: paused; }
+
+    .reviews-track.slow {
+      animation-duration: 22s;
+    }
 
     @keyframes scrollUp {
       0% { transform: translateY(0); }
@@ -423,7 +430,6 @@
       border: 1px solid var(--gray-100);
       border-radius: 16px;
       padding: 24px 28px;
-      max-width: 500px;
       flex-shrink: 0;
     }
 
@@ -678,7 +684,7 @@
       section { padding: 100px 24px; }
       .reviews-section { padding: 100px 0; }
       .reviews-header { padding: 0 24px; }
-      .reviews-track { padding: 0 24px; }
+      .reviews-track-wrap { padding: 0 24px; gap: 10px; }
       .cta-section { padding: 100px 24px; }
       footer { padding: 32px 24px; flex-direction: column; gap: 12px; text-align: center; }
     }
@@ -688,7 +694,10 @@
     }
     @media (max-width: 640px) {
       .problem-grid { grid-template-columns: 1fr; }
-      .results-grid { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .result-card { padding: 20px 16px; }
+      .result-main-stat { font-size: 30px; }
+      .result-sub-num { font-size: 13px; }
       .hero-stats { gap: 28px; }
       .diff-item { padding: 24px 24px; }
       .hero-cta-group { flex-direction: column; align-items: center; }
@@ -1017,108 +1026,105 @@
       <h2 class="section-title">직접 경험한<br>분들의 이야기</h2>
     </div>
     <div class="reviews-track-wrap">
-      <div class="reviews-track" id="reviewsTrack">
-
-        <div class="review-card">
-          <p class="review-text">"주사만 맞으면 다 될 줄 알았는데 3주째 체중이 그대로였어요. 코칭 받고 나서야 내가 뭘 잘못하고 있었는지 알았어요. 지금은 매주 꾸준히 빠지고 있어요."</p>
-          <div class="review-meta">
-            <div class="review-avatar">이</div>
-            <div>
-              <div class="review-name">이**님</div>
-              <div class="review-detail">40대 · 마운자로 복용 중</div>
+      <!-- 왼쪽 컬럼 -->
+      <div class="reviews-col">
+        <div class="reviews-track">
+          <div class="review-card">
+            <p class="review-text">"주사만 맞으면 다 될 줄 알았는데 3주째 체중이 그대로였어요. 코칭 받고 나서야 내가 뭘 잘못하고 있었는지 알았어요. 지금은 매주 꾸준히 빠지고 있어요."</p>
+            <div class="review-meta">
+              <div class="review-avatar">이</div>
+              <div>
+                <div class="review-name">이**님</div>
+                <div class="review-detail">40대 · 마운자로 복용 중</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <p class="review-text">"InBody 찍어보니까 체지방이 9키로 넘게 빠진 게 숫자로 나오더라고요. 살만 빠진 게 아니라 근육은 오히려 늘었어요. 처음에는 믿기지 않았어요."</p>
+            <div class="review-meta">
+              <div class="review-avatar">김</div>
+              <div>
+                <div class="review-name">김**님</div>
+                <div class="review-detail">50대 · 3개월 코칭 수료</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <p class="review-text">"다른 데서 식단 관리 받아봤는데 주사 맞고 있는 걸 전혀 고려를 안 해줬어요. 여기는 주사 맞으면서 어떻게 먹어야 하는지를 완전히 다르게 접근하더라고요."</p>
+            <div class="review-meta">
+              <div class="review-avatar">정</div>
+              <div>
+                <div class="review-name">정**님</div>
+                <div class="review-detail">30대 · 2개월 코칭 수료</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <p class="review-text">"주사 끊었을 때 다시 찔까봐 걱정이 제일 컸는데, 코칭하면서 먹는 패턴 자체가 바뀌었어요. 지금 3개월째 유지 중이에요."</p>
+            <div class="review-meta">
+              <div class="review-avatar">윤</div>
+              <div>
+                <div class="review-name">윤**님</div>
+                <div class="review-detail">30대 · 4개월 코칭 수료</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <p class="review-text">"솔직히 처음엔 반신반의했어요. 근데 2달 만에 11키로 넘게 빠지고 근육은 그대로인 걸 보고 나서는 그냥 믿고 따라가게 됐어요."</p>
+            <div class="review-meta">
+              <div class="review-avatar">강</div>
+              <div>
+                <div class="review-name">강**님</div>
+                <div class="review-detail">30대 · 위고비 복용 중</div>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="review-card">
-          <p class="review-text">"부작용이 너무 심해서 포기하려 했는데, 코치님이 먹는 시간이랑 종류만 바꿔봐라 하셨는데 진짜 확 줄었어요. 이런 거 왜 병원에서 안 알려주는지 모르겠어요."</p>
-          <div class="review-meta">
-            <div class="review-avatar">박</div>
-            <div>
-              <div class="review-name">박**님</div>
-              <div class="review-detail">30대 · 위고비 복용 중</div>
+      </div>
+      <!-- 오른쪽 컬럼 (속도 다르게) -->
+      <div class="reviews-col">
+        <div class="reviews-track slow">
+          <div class="review-card">
+            <p class="review-text">"부작용이 너무 심해서 포기하려 했는데, 코치님이 먹는 시간이랑 종류만 바꿔봐라 하셨는데 진짜 확 줄었어요. 이런 거 왜 병원에서 안 알려주는지 모르겠어요."</p>
+            <div class="review-meta">
+              <div class="review-avatar">박</div>
+              <div>
+                <div class="review-name">박**님</div>
+                <div class="review-detail">30대 · 위고비 복용 중</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <p class="review-text">"혼자 하면 3일도 못 가요. 매주 기록 확인해주시고 뭘 어떻게 바꿔야 하는지 구체적으로 알려주시니까 그냥 따라하게 되더라고요."</p>
+            <div class="review-meta">
+              <div class="review-avatar">최</div>
+              <div>
+                <div class="review-name">최**님</div>
+                <div class="review-detail">40대 · 마운자로 복용 중</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <p class="review-text">"25일에 8키로 넘게 빠졌는데, 그게 다 체지방이었어요. 이전에 굶어서 뺐을 때랑 몸 상태가 완전히 달라요. 피부도 처지지 않고 오히려 탄력이 생겼어요."</p>
+            <div class="review-meta">
+              <div class="review-avatar">한</div>
+              <div>
+                <div class="review-name">한**님</div>
+                <div class="review-detail">40대 · 마운자로 5mg</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <p class="review-text">"내장지방이 5단계나 줄었다고 하니까 남편이 더 놀라더라고요. 겉으로 보이는 것보다 몸 안이 건강해졌다는 게 더 기뻤어요."</p>
+            <div class="review-meta">
+              <div class="review-avatar">오</div>
+              <div>
+                <div class="review-name">오**님</div>
+                <div class="review-detail">50대 · 3개월 코칭 수료</div>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="review-card">
-          <p class="review-text">"InBody 찍어보니까 체지방이 9키로 넘게 빠진 게 숫자로 나오더라고요. 살만 빠진 게 아니라 근육은 오히려 늘었어요. 처음에는 믿기지 않았어요."</p>
-          <div class="review-meta">
-            <div class="review-avatar">김</div>
-            <div>
-              <div class="review-name">김**님</div>
-              <div class="review-detail">50대 · 3개월 코칭 수료</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <p class="review-text">"혼자 하면 3일도 못 가요. 매주 기록 확인해주시고 뭘 어떻게 바꿔야 하는지 구체적으로 알려주시니까 그냥 따라하게 되더라고요."</p>
-          <div class="review-meta">
-            <div class="review-avatar">최</div>
-            <div>
-              <div class="review-name">최**님</div>
-              <div class="review-detail">40대 · 마운자로 복용 중</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <p class="review-text">"다른 데서 식단 관리 받아봤는데 주사 맞고 있는 걸 전혀 고려를 안 해줬어요. 여기는 주사 맞으면서 어떻게 먹어야 하는지를 완전히 다르게 접근하더라고요."</p>
-          <div class="review-meta">
-            <div class="review-avatar">정</div>
-            <div>
-              <div class="review-name">정**님</div>
-              <div class="review-detail">30대 · 2개월 코칭 수료</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <p class="review-text">"25일에 8키로 넘게 빠졌는데, 그게 다 체지방이었어요. 이전에 굶어서 뺐을 때랑 몸 상태가 완전히 달라요. 피부도 처지지 않고 오히려 탄력이 생겼어요."</p>
-          <div class="review-meta">
-            <div class="review-avatar">한</div>
-            <div>
-              <div class="review-name">한**님</div>
-              <div class="review-detail">40대 · 마운자로 5mg</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <p class="review-text">"주사 끊었을 때 다시 찔까봐 걱정이 제일 컸는데, 코칭하면서 먹는 패턴 자체가 바뀌었어요. 지금 3개월째 유지 중이에요."</p>
-          <div class="review-meta">
-            <div class="review-avatar">윤</div>
-            <div>
-              <div class="review-name">윤**님</div>
-              <div class="review-detail">30대 · 4개월 코칭 수료</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <p class="review-text">"내장지방이 5단계나 줄었다고 하니까 남편이 더 놀라더라고요. 겉으로 보이는 것보다 몸 안이 건강해졌다는 게 더 기뻤어요."</p>
-          <div class="review-meta">
-            <div class="review-avatar">오</div>
-            <div>
-              <div class="review-name">오**님</div>
-              <div class="review-detail">50대 · 3개월 코칭 수료</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <p class="review-text">"솔직히 처음엔 반신반의했어요. 근데 2달 만에 11키로 넘게 빠지고 근육은 그대로인 걸 보고 나서는 그냥 믿고 따라가게 됐어요."</p>
-          <div class="review-meta">
-            <div class="review-avatar">강</div>
-            <div>
-              <div class="review-name">강**님</div>
-              <div class="review-detail">30대 · 위고비 복용 중</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 무한 루프용 복제 (JS가 처리) -->
       </div>
     </div>
   </section>
@@ -1252,9 +1258,10 @@
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
     // ── REVIEWS INFINITE SCROLL ──
-    const track = document.getElementById('reviewsTrack');
-    const cards = Array.from(track.children);
-    cards.forEach(c => track.appendChild(c.cloneNode(true)));
+    document.querySelectorAll('.reviews-track').forEach(track => {
+      const cards = Array.from(track.children);
+      cards.forEach(c => track.appendChild(c.cloneNode(true)));
+    });
   </script>
 </body>
 </html>
