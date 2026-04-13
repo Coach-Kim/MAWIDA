@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SURMOUNT-5 결과 — 마운자로 vs 위고비 직접 비교 | 마위다</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0a0a0a;--white:#fff;
+  --gray-50:#f9f9f9;--gray-100:#f0f0f0;--gray-200:#e0e0e0;
+  --gray-400:#9e9e9e;--gray-600:#555;--gray-800:#222;
+  --green:#16a34a;
+}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;background:var(--white);color:var(--black);line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:60px;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-100)}
+.nav-logo{font-size:18px;font-weight:900;letter-spacing:-0.5px;color:var(--black);text-decoration:none}
+.nav-tag{font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--gray-400);text-transform:uppercase}
+.back-link{font-size:13px;font-weight:600;color:var(--gray-600);text-decoration:none;display:flex;align-items:center;gap:6px}
+.back-link:hover{color:var(--black)}
+.col-hero{padding:100px 28px 60px;max-width:720px;margin:0 auto}
+.col-tag{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-400);margin-bottom:20px}
+.col-title{font-size:clamp(28px,5vw,46px);font-weight:900;line-height:1.18;letter-spacing:-1.5px;margin-bottom:24px}
+.col-meta{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+.col-meta-item{font-size:12px;color:var(--gray-400);font-weight:600}
+.col-meta-sep{width:3px;height:3px;border-radius:50%;background:var(--gray-200)}
+.col-lead{font-size:18px;color:var(--gray-600);line-height:1.8;border-top:1px solid var(--gray-100);padding-top:28px}
+.col-body{max-width:720px;margin:0 auto;padding:20px 28px 140px}
+.col-body h2{font-size:23px;font-weight:900;letter-spacing:-0.5px;margin:60px 0 18px;line-height:1.35}
+.col-body h3{font-size:17px;font-weight:800;letter-spacing:-0.3px;margin:36px 0 12px;color:var(--black)}
+.col-body p{font-size:16px;color:var(--gray-600);line-height:1.9;margin-bottom:22px}
+.col-body p strong{font-weight:800;color:var(--black)}
+.hl{font-weight:800;background:linear-gradient(to top,#dcfce7 45%,transparent 45%);padding:0 2px}
+.hl-yellow{font-weight:800;background:linear-gradient(to top,#fef9c3 45%,transparent 45%);padding:0 2px}
+.quote{border-left:3px solid var(--black);padding:16px 24px;margin:32px 0;background:var(--gray-50);border-radius:0 12px 12px 0}
+.quote p{font-size:15px;color:var(--gray-800);font-style:italic;margin:0;line-height:1.75}
+.insert{background:var(--gray-50);border:1px solid var(--gray-100);border-radius:20px;padding:32px;margin:36px 0}
+.insert-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-400);margin-bottom:14px}
+.insert p{font-size:15px;color:var(--gray-600);margin:0 0 10px;line-height:1.8}
+.insert p:last-child{margin:0}
+/* 대결 박스 */
+.versus{display:grid;grid-template-columns:1fr 40px 1fr;gap:0;margin:36px 0;align-items:stretch}
+.vs-box{border:1px solid var(--gray-100);border-radius:16px;padding:28px 24px}
+.vs-a{background:#f0fdf4;border-color:#bbf7d0}
+.vs-b{background:#f0f9ff;border-color:#bae6fd}
+.vs-mid{display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:var(--gray-400)}
+.vs-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;display:block}
+.vs-a .vs-label{color:var(--green)}
+.vs-b .vs-label{color:#0284c7}
+.vs-drug{font-size:18px;font-weight:900;color:var(--black);margin-bottom:4px}
+.vs-num{font-size:36px;font-weight:900;letter-spacing:-1px;color:var(--black);display:block;line-height:1;margin:14px 0 4px}
+.vs-unit{font-size:13px;font-weight:700;color:var(--gray-400)}
+.vs-detail{font-size:12px;color:var(--gray-600);line-height:1.7;margin-top:14px;padding-top:14px;border-top:1px solid var(--gray-200)}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:36px 0}
+.stat-box{background:var(--gray-50);border:1px solid var(--gray-100);border-radius:16px;padding:24px 20px;text-align:center}
+.stat-num{font-size:32px;font-weight:900;letter-spacing:-1px;color:var(--black);display:block;line-height:1}
+.stat-unit{font-size:13px;font-weight:700;color:var(--green);margin-top:4px;display:block}
+.stat-desc{font-size:12px;color:var(--gray-400);margin-top:8px;line-height:1.5}
+.tbl-wrap{border:1px solid var(--gray-100);border-radius:16px;overflow:hidden;margin:36px 0}
+table{width:100%;border-collapse:collapse}
+thead th{background:var(--black);color:var(--white);padding:14px 18px;font-size:12px;font-weight:700;text-align:left;letter-spacing:0.04em}
+tbody td{padding:14px 18px;font-size:14px;color:var(--gray-600);border-bottom:1px solid var(--gray-100);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody td:first-child{font-weight:700;color:var(--black)}
+tbody tr.highlight td{background:#f0fdf4}
+.divider{border:none;border-top:1px solid var(--gray-100);margin:48px 0}
+.summary{border:2px solid var(--black);border-radius:20px;padding:36px 32px;margin:48px 0}
+.summary-title{font-size:14px;font-weight:900;letter-spacing:0.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:20px}
+.summary-item{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.summary-item:last-child{margin-bottom:0}
+.summary-num{width:24px;height:24px;border-radius:50%;background:var(--black);color:var(--white);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.summary-text{font-size:15px;color:var(--gray-800);line-height:1.65;font-weight:500}
+.fixed-cta{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--black);color:var(--white);text-decoration:none;padding:14px 32px;border-radius:50px;font-weight:700;font-size:13px;box-shadow:0 8px 28px rgba(0,0,0,0.18);white-space:nowrap;z-index:99}
+@media(max-width:640px){
+  .col-hero,.col-body{padding-left:20px;padding-right:20px}
+  .col-title{font-size:28px}
+  .stat-row{grid-template-columns:1fr}
+  .versus{grid-template-columns:1fr;gap:12px}
+  .vs-mid{display:none}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">마위다</a>
+  <span class="nav-tag">Column 03</span>
+  <a class="back-link" href="index.html">← 목록</a>
+</nav>
+
+<div class="col-hero">
+  <div class="col-tag">임상데이터 · Clinical Data</div>
+  <h1 class="col-title">SURMOUNT-5 결과 —<br>마운자로 vs 위고비<br>직접 비교</h1>
+  <div class="col-meta">
+    <span class="col-meta-item">마위다 코칭팀</span>
+    <span class="col-meta-sep"></span>
+    <span class="col-meta-item">임상 분석</span>
+    <span class="col-meta-sep"></span>
+    <span class="col-meta-item">읽는 데 약 8분</span>
+  </div>
+  <p class="col-lead">2025년 처음으로 두 약을 같은 조건에서 맞붙인 임상이 나왔어요. 마운자로 −20.2%, 위고비 −13.7%. 차이가 나는 이유는 약의 성분 차이만이 아니에요.</p>
+</div>
+
+<div class="col-body">
+
+  <p>상담할 때 제일 많이 받는 질문이에요.</p>
+
+  <p>"마운자로랑 위고비 중에 뭐가 더 잘 들어요?"</p>
+
+  <p>그동안은 직접 비교한 임상 데이터가 없어서 대답하기 애매했어요. 각자 다른 조건에서 진행된 임상 결과를 비교하는 건 정확하지 않거든요. 그런데 2025년 1월, 뉴잉글랜드 저널 오브 메디슨(NEJM)에 드디어 직접 비교 데이터가 나왔어요.</p>
+
+  <p>SURMOUNT-5예요.</p>
+
+  <h2>결과부터 보여드릴게요</h2>
+
+  <div class="versus">
+    <div class="vs-box vs-a">
+      <span class="vs-label">마운자로 (티르제파티드)</span>
+      <div class="vs-drug">마운자로</div>
+      <span class="vs-num">−20.2%</span>
+      <span class="vs-unit">72주 평균 체중 감소율</span>
+      <div class="vs-detail">절대 감소량 평균 −22.8kg<br>참가자 기준 체중 약 113kg</div>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box vs-b">
+      <span class="vs-label">위고비 (세마글루타이드)</span>
+      <div class="vs-drug">위고비</div>
+      <span class="vs-num">−13.7%</span>
+      <span class="vs-unit">72주 평균 체중 감소율</span>
+      <div class="vs-detail">절대 감소량 평균 −15.2kg<br>참가자 기준 체중 약 111kg</div>
+    </div>
+  </div>
+
+  <p>같은 사람들을 무작위로 나눠서 한쪽엔 마운자로, 한쪽엔 위고비를 72주 동안 맞혔어요. 결과는 마운자로가 47% 더 많이 빠졌어요.</p>
+
+  <p>숫자가 꽤 명확해요.</p>
+
+  <h2>왜 이렇게 차이가 날까요</h2>
+
+  <p>마운자로와 위고비는 작용 방식이 달라요. 위고비는 GLP-1 수용체 하나에만 작용해요. 마운자로는 GLP-1과 GIP, 두 가지 수용체에 동시에 작용해요. 이걸 이중 작용제(dual agonist)라고 해요.</p>
+
+  <p>GIP 수용체가 추가되면 뭐가 달라지냐면, 지방 조직에서 에너지 대사를 직접 조절하는 경로가 하나 더 열려요. 쉽게 말하면 <span class="hl">지방을 태우는 신호가 두 방향에서 동시에 오는 거예요.</span> 식욕 억제 효과도 GLP-1 단독보다 강해요.</p>
+
+  <p>그래서 같은 기간, 같은 조건에서 더 많이 빠지는 거예요.</p>
+
+  <h3>그러면 무조건 마운자로가 맞는 건가요</h3>
+
+  <p>꼭 그렇진 않아요.</p>
+
+  <p>SURMOUNT-5 참가자들은 평균 체중이 112kg이고, 당뇨가 없는 비만 환자들이었어요. 이 조건에서 마운자로가 앞섰다는 거예요. 개인의 상황에 따라 달라질 수 있어요.</p>
+
+  <p>위고비(세마글루타이드)는 심혈관 질환 감소 데이터가 더 많이 쌓여 있어요. 2023년 SELECT 임상에서 심혈관 사건을 20% 줄였다는 결과가 나왔어요. 심장 질환이 있거나 심혈관 리스크가 높은 분들에게는 이 데이터가 중요해요.</p>
+
+  <p>또 개인마다 부작용 반응이 달라요. 마운자로에서 메스꺼움이 심했는데 위고비로 바꾸고 나서 훨씬 편해졌다는 케이스도 있어요. 약의 효과 숫자만 보고 선택하면 안 되는 이유예요.</p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>항목</th><th>마운자로</th><th>위고비</th></tr></thead>
+      <tbody>
+        <tr><td>성분</td><td>티르제파티드</td><td>세마글루타이드</td></tr>
+        <tr><td>작용 수용체</td><td>GLP-1 + GIP (이중)</td><td>GLP-1 (단독)</td></tr>
+        <tr class="highlight"><td>SURMOUNT-5 감량</td><td>−20.2% (72주)</td><td>−13.7% (72주)</td></tr>
+        <tr><td>심혈관 데이터</td><td>축적 중</td><td>SELECT 임상 (−20% 심혈관 사건)</td></tr>
+        <tr><td>투여 방식</td><td>주 1회 피하주사</td><td>주 1회 피하주사</td></tr>
+        <tr><td>국내 허가 용도</td><td>제2형 당뇨, 비만</td><td>비만 (위고비), 당뇨 (오젬픽)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>근데 이 숫자에서 놓치면 안 되는 게 있어요</h2>
+
+  <p>마운자로로 20% 빠졌다는 결과, 다시 보면 약 113kg 기준으로 −22.8kg이에요. 근데 이게 72주, 즉 약 1년 반 동안의 결과예요.</p>
+
+  <p>임상에서 약을 맞은 사람들은 전문적인 모니터링을 받았어요. 식단 지도, 운동 권고, 주기적인 체크. 그냥 약만 맞은 게 아니에요.</p>
+
+  <div class="quote">
+    <p>임상에서 나온 숫자가 내 숫자가 되려면, 임상과 같은 조건을 만들어야 해요. 약은 같지만 관리 방식이 다르면 결과도 달라져요.</p>
+  </div>
+
+  <p>실제 복용자 데이터를 보면 편차가 커요. 같은 마운자로를 맞았는데 어떤 분은 6개월에 15kg를 뺐고, 어떤 분은 3kg밖에 못 뺐어요. 약의 차이가 아니에요. 먹는 방식, 단백질 섭취, 수면, 운동, 스트레스 관리의 차이예요.</p>
+
+  <p>임상 숫자는 가능성을 보여줘요. <strong>그 가능성을 실현하는 건 관리예요.</strong></p>
+
+  <hr class="divider">
+
+  <h2>SURMOUNT-5가 알려주지 않은 것</h2>
+
+  <p>이 임상에서 체중이 빠진 건 확인됐어요. 근데 그 체중이 지방인지 근육인지는 이 연구의 주요 보고 항목이 아니었어요.</p>
+
+  <p>우리가 중요하게 봐야 하는 건 체중 감소량만이 아니에요. <span class="hl">어떤 조성으로 빠졌느냐예요.</span> 20kg이 빠졌는데 그 중 7kg이 근육이라면, 숫자는 좋아도 몸은 나빠진 거예요.</p>
+
+  <p>단백질 섭취, 저항 운동, 수면 — 이 세 가지가 감량 조성을 결정해요. 약이 얼마나 세냐보다, 약을 맞는 동안 어떻게 관리하느냐가 결과의 질을 결정해요.</p>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <span class="stat-num">47%</span>
+      <span class="stat-unit">마운자로 우위</span>
+      <span class="stat-desc">위고비 대비 마운자로의 추가 감량 비율 (SURMOUNT-5)</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">72주</span>
+      <span class="stat-unit">임상 기간</span>
+      <span class="stat-desc">SURMOUNT-5 추적 기간. 약 1년 반의 결과</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">2025.01</span>
+      <span class="stat-unit">NEJM 발표</span>
+      <span class="stat-desc">뉴잉글랜드 저널 오브 메디슨 게재. 최초 직접 비교 임상</span>
+    </div>
+  </div>
+
+  <div class="insert">
+    <div class="insert-label">어느 약이 나에게 맞는지 판단하는 기준</div>
+    <p><strong>마운자로가 유리한 경우:</strong> 체중 감량이 주목적, 당뇨 없는 비만, 최대 감량 효과를 원하는 경우</p>
+    <p><strong>위고비가 고려되는 경우:</strong> 심혈관 질환 또는 고위험군, 마운자로 부작용이 심했던 경우, 당뇨 관리(오젬픽)가 주목적인 경우</p>
+    <p>최종 판단은 반드시 의사와 함께 해야 해요. 기저 질환, 복용 중인 약물, 개인 병력에 따라 달라져요.</p>
+  </div>
+
+  <div class="summary">
+    <div class="summary-title">이 글의 핵심 요약</div>
+    <div class="summary-item">
+      <div class="summary-num">1</div>
+      <div class="summary-text">2025년 NEJM에 발표된 SURMOUNT-5가 최초로 두 약을 직접 비교했어요. 마운자로 −20.2%, 위고비 −13.7%로 마운자로가 47% 더 빠졌어요.</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">2</div>
+      <div class="summary-text">마운자로가 더 센 이유는 GLP-1과 GIP 두 수용체에 동시 작용하는 이중 작용제이기 때문이에요.</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">3</div>
+      <div class="summary-text">무조건 마운자로가 정답은 아니에요. 심혈관 리스크, 부작용 반응, 개인 상황에 따라 위고비가 맞는 경우도 있어요.</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">4</div>
+      <div class="summary-text">임상 숫자는 가능성이에요. 그 가능성을 실현하는 건 약이 아니라 관리 방식이에요.</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">5</div>
+      <div class="summary-text">체중이 얼마나 빠졌냐보다, 어떤 조성으로 빠졌냐가 더 중요해요. 그걸 결정하는 건 단백질, 운동, 수면이에요.</div>
+    </div>
+  </div>
+
+</div>
+<a href="index.html" class="fixed-cta">코칭 상담 신청하기 →</a>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>메스꺼움 없이 먹는 법 — Phase 1 식사 가이드 | 마위다</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0a0a0a;--white:#fff;
+  --gray-50:#f9f9f9;--gray-100:#f0f0f0;--gray-200:#e0e0e0;
+  --gray-400:#9e9e9e;--gray-600:#555;--gray-800:#222;
+  --green:#16a34a;--green-light:#dcfce7;
+}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;background:var(--white);color:var(--black);line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:60px;background:rgba(255,255,255,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-100)}
+.nav-logo{font-size:18px;font-weight:900;letter-spacing:-0.5px;color:var(--black);text-decoration:none}
+.nav-tag{font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--gray-400);text-transform:uppercase}
+.back-link{font-size:13px;font-weight:600;color:var(--gray-600);text-decoration:none;display:flex;align-items:center;gap:6px}
+.back-link:hover{color:var(--black)}
+
+.col-hero{padding:100px 28px 60px;max-width:720px;margin:0 auto}
+.col-tag{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-400);margin-bottom:20px}
+.col-title{font-size:clamp(28px,5vw,46px);font-weight:900;line-height:1.18;letter-spacing:-1.5px;margin-bottom:24px}
+.col-meta{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+.col-meta-item{font-size:12px;color:var(--gray-400);font-weight:600}
+.col-meta-sep{width:3px;height:3px;border-radius:50%;background:var(--gray-200)}
+.col-lead{font-size:18px;color:var(--gray-600);line-height:1.8;border-top:1px solid var(--gray-100);padding-top:28px}
+
+.col-body{max-width:720px;margin:0 auto;padding:20px 28px 140px}
+.col-body h2{font-size:23px;font-weight:900;letter-spacing:-0.5px;margin:60px 0 18px;line-height:1.35}
+.col-body h3{font-size:17px;font-weight:800;letter-spacing:-0.3px;margin:36px 0 12px;color:var(--black)}
+.col-body p{font-size:16px;color:var(--gray-600);line-height:1.9;margin-bottom:22px}
+.col-body p strong,.emp{font-weight:800;color:var(--black)}
+.hl{font-weight:800;background:linear-gradient(to top,#dcfce7 45%,transparent 45%);padding:0 2px}
+.hl-yellow{font-weight:800;background:linear-gradient(to top,#fef9c3 45%,transparent 45%);padding:0 2px}
+
+.quote{border-left:3px solid var(--black);padding:16px 24px;margin:32px 0;background:var(--gray-50);border-radius:0 12px 12px 0}
+.quote p{font-size:15px;color:var(--gray-800);font-style:italic;margin:0;line-height:1.75}
+
+.insert{background:var(--gray-50);border:1px solid var(--gray-100);border-radius:20px;padding:32px;margin:36px 0}
+.insert-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-400);margin-bottom:14px}
+.insert p{font-size:15px;color:var(--gray-600);margin:0 0 10px;line-height:1.8}
+.insert p:last-child{margin:0}
+
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:36px 0}
+.stat-box{background:var(--gray-50);border:1px solid var(--gray-100);border-radius:16px;padding:24px 20px;text-align:center}
+.stat-num{font-size:32px;font-weight:900;letter-spacing:-1px;color:var(--black);display:block;line-height:1}
+.stat-unit{font-size:13px;font-weight:700;color:var(--green);margin-top:4px;display:block}
+.stat-desc{font-size:12px;color:var(--gray-400);margin-top:8px;line-height:1.5}
+
+.phase-list{margin:36px 0;display:flex;flex-direction:column;gap:0}
+.phase-item{display:flex;gap:24px;padding-bottom:36px;position:relative}
+.phase-item:last-child{padding-bottom:0}
+.phase-item::before{content:'';position:absolute;left:19px;top:40px;bottom:0;width:2px;background:var(--gray-100)}
+.phase-item:last-child::before{display:none}
+.phase-dot{width:40px;height:40px;border-radius:50%;background:var(--black);color:var(--white);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:0.04em}
+.phase-content{flex:1;padding-top:8px}
+.phase-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-400);margin-bottom:6px}
+.phase-title{font-size:17px;font-weight:900;color:var(--black);margin-bottom:10px;letter-spacing:-0.3px}
+.phase-body{font-size:14px;color:var(--gray-600);line-height:1.8}
+
+.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:36px 0}
+.food-box{border-radius:16px;padding:24px}
+.food-ok{background:#f0fdf4;border:1px solid #bbf7d0}
+.food-no{background:#fff5f5;border:1px solid #fecaca}
+.food-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;display:block}
+.food-ok .food-label{color:var(--green)}
+.food-no .food-label{color:#ef4444}
+.food-box ul{list-style:none;padding:0}
+.food-box li{font-size:14px;color:var(--gray-700);line-height:1.8;padding-left:18px;position:relative;margin-bottom:4px}
+.food-ok li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700;font-size:13px}
+.food-no li::before{content:'✕';position:absolute;left:0;color:#ef4444;font-weight:700;font-size:13px}
+
+.tbl-wrap{border:1px solid var(--gray-100);border-radius:16px;overflow:hidden;margin:36px 0}
+table{width:100%;border-collapse:collapse}
+thead th{background:var(--black);color:var(--white);padding:14px 18px;font-size:12px;font-weight:700;text-align:left;letter-spacing:0.04em}
+tbody td{padding:14px 18px;font-size:14px;color:var(--gray-600);border-bottom:1px solid var(--gray-100);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody td:first-child{font-weight:700;color:var(--black)}
+tbody tr.highlight td{background:#f0fdf4}
+
+.chk{background:var(--black);border-radius:20px;padding:36px 32px;margin:48px 0}
+.chk-title{font-size:18px;font-weight:900;color:var(--white);margin-bottom:6px;display:block;letter-spacing:-0.3px}
+.chk-sub{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:28px;display:block;font-weight:600}
+.chk-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;font-size:14px;font-weight:600;color:rgba(255,255,255,0.75);line-height:1.6}
+.chk-item:last-child{margin-bottom:0}
+.chk-item input{width:18px;height:18px;margin-top:2px;flex-shrink:0;cursor:pointer;accent-color:#4ade80}
+
+.divider{border:none;border-top:1px solid var(--gray-100);margin:48px 0}
+
+.summary{border:2px solid var(--black);border-radius:20px;padding:36px 32px;margin:48px 0}
+.summary-title{font-size:14px;font-weight:900;letter-spacing:0.06em;text-transform:uppercase;color:var(--gray-400);margin-bottom:20px}
+.summary-item{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.summary-item:last-child{margin-bottom:0}
+.summary-num{width:24px;height:24px;border-radius:50%;background:var(--black);color:var(--white);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.summary-text{font-size:15px;color:var(--gray-800);line-height:1.65;font-weight:500}
+
+.fixed-cta{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--black);color:var(--white);text-decoration:none;padding:14px 32px;border-radius:50px;font-weight:700;font-size:13px;box-shadow:0 8px 28px rgba(0,0,0,0.18);white-space:nowrap;z-index:99}
+
+@media(max-width:640px){
+  .col-hero,.col-body{padding-left:20px;padding-right:20px}
+  .col-title{font-size:28px}
+  .stat-row{grid-template-columns:1fr}
+  .food-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">마위다</a>
+  <span class="nav-tag">Column 02</span>
+  <a class="back-link" href="index.html">← 목록</a>
+</nav>
+
+<div class="col-hero">
+  <div class="col-tag">부작용 · Side Effects</div>
+  <h1 class="col-title">메스꺼움 없이<br>먹는 법 —<br>Phase 1 식사 가이드</h1>
+  <div class="col-meta">
+    <span class="col-meta-item">마위다 코칭팀</span>
+    <span class="col-meta-sep"></span>
+    <span class="col-meta-item">부작용 관리</span>
+    <span class="col-meta-sep"></span>
+    <span class="col-meta-item">읽는 데 약 9분</span>
+  </div>
+  <p class="col-lead">주사 맞고 나서 아무것도 못 먹겠다고 굶었어요. 다음 날 아침에 커피 한 잔 마셨다가 토했어요. 약이 안 맞는 게 아니에요. 먹는 방식이 잘못된 거예요.</p>
+</div>
+
+<div class="col-body">
+
+  <p>30대 직장인이 마운자로를 처음 맞았어요. 맞고 나서 저녁에 배가 고팠는데, 맞은 김에 확실히 해야겠다 싶어서 밥을 거의 안 먹었대요.</p>
+
+  <p>다음 날 아침. 출근 준비하다가 구역질이 올라왔어요. 빈속에 커피 한 잔 마셨는데 바로 토했대요.</p>
+
+  <p>"약이 저한테 안 맞는 것 같아요. 맞은 지 이틀도 안 됐는데 그만해야 할 것 같아요."</p>
+
+  <p>약이 안 맞는 게 아니에요. 먹는 방식이 잘못된 거예요.</p>
+
+  <h2>메스꺼움은 부작용이 아니라 반응이에요</h2>
+
+  <p>마운자로·위고비가 메스꺼움을 일으키는 이유가 있어요. 약이 위 배출 속도를 실제로 늦추거든요. 음식이 위에 오래 머물면서, 뇌가 "뭔가 잘못됐다"는 신호를 받아요. 거기에 뇌 속 구토 중추에도 직접 작용해요.</p>
+
+  <p>이걸 쉽게 말하면, 몸이 약에 적응하기 전에 나타나는 반응이에요. 약이 안 맞는 게 아니에요. 적응이 덜 됐다는 신호예요.</p>
+
+  <p>SURMOUNT-1 임상 데이터를 보면, 마운자로 15mg 기준 메스꺼움 보고 비율이 44%예요. 거의 절반이에요. 근데 그 중 약을 중단한 비율은 5%밖에 안 돼요. 나머지 39%는 관리하면서 지나갔어요.</p>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <span class="stat-num">44%</span>
+      <span class="stat-unit">메스꺼움 발생률</span>
+      <span class="stat-desc">마운자로 15mg 기준 메스꺼움 보고 비율 (SURMOUNT-1)</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">4~8주</span>
+      <span class="stat-unit">가장 힘든 구간</span>
+      <span class="stat-desc">용량 증량 직후 메스꺼움이 최고조에 달하는 시기</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">5%</span>
+      <span class="stat-unit">실제 중단율</span>
+      <span class="stat-desc">메스꺼움으로 약을 중단한 비율. 대부분은 관리로 극복</span>
+    </div>
+  </div>
+
+  <p>관리하면서 지나간 사람과, 포기한 사람의 차이는 의지가 아니에요. 먹는 방식이에요.</p>
+
+  <h2>메스꺼움을 악화시키는 두 가지 실수</h2>
+
+  <p>첫 번째는 굶는 거예요.</p>
+
+  <p>공복 상태에서는 위산이 위벽을 자극해요. 혈당이 내려가면서 구역감이 심해지고요. 많이들 "못 먹겠으니까 굶어야지"라고 생각하는데, 굶는 게 오히려 더 힘들게 만들어요.</p>
+
+  <p>두 번째는 한 번에 많이 먹는 거예요.</p>
+
+  <p>위 배출이 이미 느려진 상태에서 음식이 한꺼번에 들어오면, 위가 팽창하면서 포만감과 구역질이 동시에 올라와요. "주사 맞고 밥 한 그릇 먹었다가 바로 토했어요"는 몸이 약을 거부하는 게 아니에요. 양이 너무 많았던 거예요.</p>
+
+  <div class="quote">
+    <p>"배가 고픈데 먹으면 토할 것 같고, 안 먹으면 더 힘들고. 뭘 어떻게 해야 해요?" — 이 질문을 하는 분들이 Phase 1에서 가장 많이 포기해요. 답은 소량씩 자주 먹는 거예요.</p>
+  </div>
+
+  <p>그 외에도 메스꺼움을 악화시키는 것들이 있어요. 기름진 음식, 탄산음료, 커피, 알코올, 너무 뜨겁거나 차가운 음식. 그리고 먹고 나서 바로 눕는 것.</p>
+
+  <p>하나씩 보면 별거 아닌 것 같지만, 이게 겹치면 정말 힘들어져요.</p>
+
+  <h2>Phase 1: 처음 4주를 위한 5가지 원칙</h2>
+
+  <p>마운자로나 위고비를 처음 시작하거나 용량을 올린 뒤 첫 2~4주를 저는 Phase 1이라고 불러요. 이 시기의 목표는 "얼마나 적게 먹느냐"가 아니에요. <span class="hl">"어떻게 먹어야 부작용 없이 영양을 챙기느냐"예요.</span></p>
+
+  <div class="phase-list">
+    <div class="phase-item">
+      <div class="phase-dot">01</div>
+      <div class="phase-content">
+        <div class="phase-label">원칙 1</div>
+        <div class="phase-title">소량씩, 하루 5~6번</div>
+        <div class="phase-body">한 번에 먹는 양을 밥그릇의 1/3~1/2로 줄이고, 2~3시간마다 조금씩 넣어요. 위를 너무 비워두지도, 너무 채우지도 않는 게 핵심이에요. 배고픔을 느끼기 전에 먹는 거예요.</div>
+      </div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-dot">02</div>
+      <div class="phase-content">
+        <div class="phase-label">원칙 2</div>
+        <div class="phase-title">단백질 → 채소 → 탄수화물 순서로</div>
+        <div class="phase-body">탄수화물을 먼저 먹으면 혈당이 빠르게 올랐다가 떨어지면서 구역감이 심해질 수 있어요. 단백질부터 먹으면 포만감 신호가 천천히 올라와서 과식도 막아줘요. 식사 순서가 메스꺼움에 이렇게 영향을 줘요.</div>
+      </div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-dot">03</div>
+      <div class="phase-content">
+        <div class="phase-label">원칙 3</div>
+        <div class="phase-title">음식 온도는 미지근하게</div>
+        <div class="phase-body">너무 뜨겁거나 차가운 음식은 위장을 자극해요. 특히 얼음이 든 음료나 냉동 디저트는 이 시기에 최악이에요. 따뜻한 생강차나 페퍼민트차는 오히려 메스꺼움을 가라앉히는 데 도움이 돼요.</div>
+      </div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-dot">04</div>
+      <div class="phase-content">
+        <div class="phase-label">원칙 4</div>
+        <div class="phase-title">먹고 나서 30분은 앉아있어요</div>
+        <div class="phase-body">식후 바로 눕거나 격렬하게 움직이면 위산 역류가 생겨요. 30분 정도는 앉거나 천천히 걸어요. 자기 최소 2시간 전에 마지막 식사를 끝내는 게 좋아요.</div>
+      </div>
+    </div>
+    <div class="phase-item">
+      <div class="phase-dot">05</div>
+      <div class="phase-content">
+        <div class="phase-label">원칙 5</div>
+        <div class="phase-title">주사 당일은 더 보수적으로</div>
+        <div class="phase-body">마운자로는 주사 후 12~24시간 사이에 혈중 농도가 최고조예요. 메스꺼움이 제일 심한 때도 이때예요. 주사 당일은 먹는 것보다 수분 보충에 집중하세요. 크래커 한두 장, 바나나 반 개, 미지근한 물. 그걸로 충분해요.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>먹어도 되는 것, 이 시기만큼은 피해야 하는 것</h2>
+
+  <div class="food-grid">
+    <div class="food-box food-ok">
+      <span class="food-label">이 시기에 좋은 음식</span>
+      <ul>
+        <li>두부 (소화 쉽고 단백질 풍부)</li>
+        <li>흰살 생선 (대구·명태·조기)</li>
+        <li>계란 스크램블 / 반숙</li>
+        <li>그릭 요거트 (무가당)</li>
+        <li>바나나, 사과</li>
+        <li>오트밀 (혈당 완만하게 올라감)</li>
+        <li>따뜻한 미역국·북어국</li>
+        <li>삶은 고구마</li>
+        <li>크래커 (단순한 것)</li>
+        <li>생강차, 페퍼민트차</li>
+      </ul>
+    </div>
+    <div class="food-box food-no">
+      <span class="food-label">이 시기에 피해야 하는 음식</span>
+      <ul>
+        <li>삼겹살, 갈비 등 고지방육</li>
+        <li>튀긴 음식 전반</li>
+        <li>커피 (위산 분비 자극)</li>
+        <li>탄산음료 (가스로 팽만감 악화)</li>
+        <li>알코올</li>
+        <li>매운 음식</li>
+        <li>강한 향의 음식 (마늘볶음 등)</li>
+        <li>아이스크림, 냉동 간식</li>
+        <li>버터·크림 파스타</li>
+        <li>단당류 디저트</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>피해야 하는 음식들의 공통점이 있어요. <strong>소화가 오래 걸리거나, 위를 자극하거나, 혈당을 급격하게 올리는 것들이에요.</strong> 위 배출이 이미 느려진 상태에서 소화가 느린 음식이 들어오면 위가 감당을 못해요.</p>
+
+  <h3>수분, 생각보다 훨씬 중요해요</h3>
+
+  <p>메스꺼움이 심한 날엔 물 마시는 것도 힘들어요. 근데 탈수가 생기면 메스꺼움이 더 심해져요. 악순환이에요.</p>
+
+  <p>한 번에 많이 마시지 말고, 한 모금씩 자주 마셔요. 목표는 하루 1.5~2L예요. <span class="hl">전해질 음료를 물로 2배 희석해서 마시는 것도 좋아요.</span> 나트륨과 칼륨이 수분 흡수를 도와주고, 구역감을 조금 완화해줘요.</p>
+
+  <hr class="divider">
+
+  <h2>그래도 너무 힘들다면</h2>
+
+  <p>식사 방법을 바꿔도 일상생활에 지장을 줄 정도라면, 의사와 상의해서 항구토제를 단기간 쓰는 방법이 있어요. 이건 반드시 처방을 받고 써야 해요.</p>
+
+  <p>또는 용량 증량 속도를 늦추는 방법도 있어요. 마운자로는 표준 증량 일정이 있지만, 부작용이 심하면 현재 용량에서 더 오래 머무르면서 충분히 적응하고 나서 올리는 게 나아요.</p>
+
+  <p><strong>약의 효과는 용량에서 오지만, 약을 끝까지 맞을 수 있게 하는 건 몸이 적응하는 속도예요.</strong> 빠르게 올리다가 포기하는 것보다, 천천히 올려서 6개월을 버티는 게 결과가 훨씬 좋아요.</p>
+
+  <div class="insert">
+    <div class="insert-label">주사 맞는 요일 팁</div>
+    <p>주사 후 12~24시간이 가장 힘든 시기예요. 직장인 기준으로 금요일 저녁에 맞으면, 주말 동안 집에서 적응하고 월요일엔 어느 정도 회복된 상태로 출근할 수 있어요.</p>
+    <p>처음 2~3회는 무조건 여유 있는 날로 잡으세요. 회사 출근날 맞지 마세요.</p>
+  </div>
+
+  <h2>Phase 1을 잘 버티면 Phase 2가 달라져요</h2>
+
+  <p>처음 4~8주를 어떻게 먹으면서 버티냐가 이후 복용 패턴 전체를 결정해요.</p>
+
+  <p>이 시기에 너무 굶어서 근육이 빠지거나, 너무 힘들어서 약을 포기하는 분들이 있어요. 반면 Phase 1을 전략적으로 관리하면, 몸이 약에 적응한 상태에서 Phase 2로 넘어가요. Phase 2부터는 메스꺼움이 거의 없어지고, 식사가 안정되고, 그때부터 제대로 된 다이어트 식단을 짤 수 있어요.</p>
+
+  <p>Phase 1은 감량을 시작하는 시기가 아니에요.</p>
+
+  <p><span class="hl">감량을 위한 몸을 만드는 시기예요.</span></p>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>시기</th><th>주요 목표</th><th>식사 전략</th></tr></thead>
+      <tbody>
+        <tr><td>Day 1~3</td><td>수분 유지, 극소량 섭취</td><td>크래커·바나나·미지근한 물 위주</td></tr>
+        <tr class="highlight"><td>Week 1~4 (Phase 1)</td><td>부작용 최소화, 단백질 최소 확보</td><td>소량 자주, 단백질 먼저, 자극 음식 제거</td></tr>
+        <tr><td>Week 4~8 (적응기)</td><td>식사 패턴 안정화</td><td>서서히 다양화, 단백질 목표 상향</td></tr>
+        <tr><td>Week 8 이후 (Phase 2)</td><td>감량 최적화</td><td>단백질 1.5g/kg 목표, 저항 운동 병행</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>지금 메스꺼움으로 힘드신 분들. 포기하지 마세요. 대부분은 4~6주 안에 뚜렷하게 나아져요. 그 시간을 잘 먹으면서 버티는 게 전략이에요.</p>
+
+  <div class="chk">
+    <span class="chk-title">Phase 1 식사 관리 체크리스트</span>
+    <span class="chk-sub">주사 후 첫 2~4주 동안 점검해보세요</span>
+    <div class="chk-item"><input type="checkbox"> 한 번에 먹는 양을 평소의 1/3~1/2로 줄였나요?</div>
+    <div class="chk-item"><input type="checkbox"> 하루 5~6번 소량씩 나눠서 먹고 있나요?</div>
+    <div class="chk-item"><input type="checkbox"> 기름진 음식, 튀김, 알코올, 커피를 이 시기 동안 끊었나요?</div>
+    <div class="chk-item"><input type="checkbox"> 식사 순서가 단백질 → 채소 → 탄수화물인가요?</div>
+    <div class="chk-item"><input type="checkbox"> 물을 하루 1.5L 이상 마시고 있나요?</div>
+    <div class="chk-item"><input type="checkbox"> 주사 맞는 날을 여유 있는 날로 잡고 있나요?</div>
+    <div class="chk-item"><input type="checkbox"> 너무 힘들면 의사에게 말했나요? 혼자 버티지 않았나요?</div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-title">이 글의 핵심 요약</div>
+    <div class="summary-item">
+      <div class="summary-num">1</div>
+      <div class="summary-text">메스꺼움은 약이 안 맞아서가 아니에요. 위 배출이 느려지면서 생기는 적응 반응이고, 대부분 4~8주 안에 줄어요.</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">2</div>
+      <div class="summary-text">굶는 것과 한 번에 많이 먹는 것 모두 메스꺼움을 악화시켜요. 소량씩 자주, 단백질부터, 미지근하게가 기본 원칙이에요.</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">3</div>
+      <div class="summary-text">주사 당일과 다음 날이 가장 힘들어요. 이때는 먹는 것보다 수분 보충에 집중하세요.</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">4</div>
+      <div class="summary-text">부작용이 너무 심하면 용량 증량 속도를 늦추는 게 방법이에요. 빠르게 올리다 포기하는 것보다 낫습니다.</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">5</div>
+      <div class="summary-text">Phase 1은 다이어트 시작이 아니에요. 제대로 감량할 수 있는 몸을 만드는 준비 기간이에요.</div>
+    </div>
+  </div>
+
+</div>
+
+<a href="index.html" class="fixed-cta">코칭 상담 신청하기 →</a>
+
+</body>
+</html>
