@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마운자로·위고비 셀프 코칭 바이블 | 마위다</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0a0a0a;--white:#fff;
+  --gray-50:#f9f9f9;--gray-100:#f0f0f0;--gray-200:#e0e0e0;
+  --gray-400:#9e9e9e;--gray-600:#555;--gray-800:#222;
+  --green:#16a34a;
+}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;background:var(--white);color:var(--black);line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:60px;background:rgba(10,10,10,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-logo{font-size:18px;font-weight:900;letter-spacing:-0.5px;color:var(--white);text-decoration:none}
+.back-link{font-size:13px;font-weight:600;color:rgba(255,255,255,0.5);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color 0.2s}
+.back-link:hover{color:var(--white)}
+
+/* HERO */
+.hero{background:#0d1a0d;min-height:100vh;display:flex;align-items:flex-end;padding:0 0 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 40%,rgba(74,222,128,0.08) 0%,transparent 70%)}
+.hero-inner{max-width:960px;margin:0 auto;padding:0 48px;width:100%}
+.hero-badge{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#4ade80;margin-bottom:24px;display:block}
+.hero-title{font-size:clamp(36px,5.5vw,64px);font-weight:900;color:var(--white);line-height:1.1;letter-spacing:-2px;margin-bottom:24px}
+.hero-desc{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.8;max-width:480px;margin-bottom:48px}
+.hero-bottom{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.hero-price{font-size:36px;font-weight:900;color:var(--white);letter-spacing:-1px}
+.hero-price-label{font-size:12px;color:rgba(255,255,255,0.35);font-weight:600;margin-bottom:4px}
+.hero-cta{background:var(--white);color:var(--black);font-size:14px;font-weight:800;padding:16px 36px;border-radius:50px;text-decoration:none;letter-spacing:-0.2px;transition:opacity 0.2s}
+.hero-cta:hover{opacity:0.85}
+.hero-stats{display:flex;gap:40px;padding-top:48px;border-top:1px solid rgba(255,255,255,0.08);margin-top:48px}
+.hero-stat-num{font-size:28px;font-weight:900;color:var(--white);letter-spacing:-1px;display:block}
+.hero-stat-label{font-size:12px;color:rgba(255,255,255,0.35);font-weight:600}
+
+/* ABOUT */
+.about{padding:100px 48px;max-width:960px;margin:0 auto}
+.section-label{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-400);margin-bottom:20px;display:block}
+.about-title{font-size:clamp(24px,3.5vw,36px);font-weight:900;line-height:1.25;letter-spacing:-1px;margin-bottom:24px}
+.about-desc{font-size:16px;color:var(--gray-600);line-height:1.9;max-width:600px}
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px}
+.about-box{background:var(--gray-50);border:1px solid var(--gray-100);border-radius:16px;padding:24px}
+.about-box-num{font-size:28px;font-weight:900;color:var(--black);letter-spacing:-1px;display:block;margin-bottom:6px}
+.about-box-label{font-size:12px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
+.about-box-desc{font-size:13px;color:var(--gray-600);line-height:1.6}
+
+/* CHAPTERS */
+.chapters{background:var(--gray-50);padding:100px 0}
+.chapters-inner{max-width:960px;margin:0 auto;padding:0 48px}
+.chapters-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:24px;flex-wrap:wrap}
+.chapters-header-left{}
+.chapters-title{font-size:clamp(24px,3.5vw,36px);font-weight:900;letter-spacing:-1px;margin-top:16px}
+.chapters-subtitle{font-size:14px;color:var(--gray-600);line-height:1.7;max-width:360px;margin-top:12px}
+.chapter-list{display:flex;flex-direction:column;gap:0}
+.chapter-item{display:flex;align-items:flex-start;gap:24px;padding:24px 0;border-bottom:1px solid var(--gray-100);cursor:default}
+.chapter-item:first-child{border-top:1px solid var(--gray-100)}
+.chapter-num{width:48px;height:48px;border-radius:12px;background:var(--black);color:var(--white);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:0.04em}
+.chapter-intro .chapter-num{background:var(--gray-200);color:var(--gray-600)}
+.chapter-content{flex:1}
+.chapter-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px}
+.chapter-title{font-size:16px;font-weight:800;color:var(--black);margin-bottom:4px;letter-spacing:-0.3px}
+.chapter-desc{font-size:13px;color:var(--gray-600);line-height:1.6}
+.chapter-tags{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.chapter-tag{font-size:11px;font-weight:600;color:var(--gray-400);background:var(--white);border:1px solid var(--gray-100);padding:3px 10px;border-radius:50px}
+
+/* BOTTOM CTA */
+.bottom-cta{background:#0d1a0d;padding:100px 48px;text-align:center}
+.bottom-cta-label{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:20px;display:block}
+.bottom-cta-title{font-size:clamp(28px,4vw,44px);font-weight:900;color:var(--white);letter-spacing:-1.5px;line-height:1.2;margin-bottom:16px}
+.bottom-cta-desc{font-size:15px;color:rgba(255,255,255,0.4);margin-bottom:48px}
+.bottom-price{font-size:44px;font-weight:900;color:var(--white);letter-spacing:-2px;margin-bottom:36px}
+.bottom-btn{display:inline-block;background:var(--white);color:var(--black);font-size:15px;font-weight:800;padding:18px 48px;border-radius:50px;text-decoration:none;transition:opacity 0.2s}
+.bottom-btn:hover{opacity:0.85}
+.bottom-note{font-size:12px;color:rgba(255,255,255,0.25);margin-top:20px}
+
+@media(max-width:640px){
+  .hero-inner,.about,.chapters-inner{padding-left:24px;padding-right:24px}
+  .hero-stats{gap:24px;flex-wrap:wrap}
+  .about-grid{grid-template-columns:1fr}
+  .bottom-cta{padding:80px 24px}
+  nav{padding:0 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">마위다</a>
+  <a class="back-link" href="index.html">← 돌아가기</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <span class="hero-badge">복용자 전용 · Self-Coaching Edition</span>
+    <h1 class="hero-title">마운자로·위고비<br>셀프 코칭 바이블</h1>
+    <p class="hero-desc">주사 맞고 뭘 먹어야 할지 모르겠는 분들을 위해 썼어요. 부작용이 왔을 때 어떻게 해야 하는지, 살이 안 빠질 때 뭘 봐야 하는지, 약 끊고 나서 어떻게 유지하는지 — 스스로 관리할 수 있게요.</p>
+    <div class="hero-bottom">
+      <div>
+        <div class="hero-price-label">정가</div>
+        <div class="hero-price">19,000원</div>
+      </div>
+      <a href="index.html#consult" class="hero-cta">구매 문의하기 →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="hero-stat-num">12</span>
+        <span class="hero-stat-label">챕터</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">Phase별</span>
+        <span class="hero-stat-label">자가 관리 가이드</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">한국</span>
+        <span class="hero-stat-label">음식 DB 포함</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">PDF</span>
+        <span class="hero-stat-label">즉시 다운로드</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about">
+  <span class="section-label">About This Book</span>
+  <h2 class="about-title">혼자서도 잘 관리할 수<br>있도록 썼어요</h2>
+  <p class="about-desc">의사나 코치가 없어도 돼요. 주사 맞은 날부터 약 끊은 후까지 — 단계마다 뭘 먹고, 어떻게 움직이고, 무엇을 확인해야 하는지 직접 판단할 수 있도록 썼어요.</p>
+  <div class="about-grid">
+    <div class="about-box">
+      <span class="about-box-num">Phase별</span>
+      <div class="about-box-label">식단 가이드</div>
+      <div class="about-box-desc">복용 초기·중기·안정기별 실제 먹는 방법, 양, 타이밍을 단계별로 정리</div>
+    </div>
+    <div class="about-box">
+      <span class="about-box-num">5가지</span>
+      <div class="about-box-label">정체기 자가진단</div>
+      <div class="about-box-desc">살이 안 빠질 때 내가 직접 원인을 찾고 해결할 수 있는 체크리스트</div>
+    </div>
+    <div class="about-box">
+      <span class="about-box-num">한국어</span>
+      <div class="about-box-label">음식 DB</div>
+      <div class="about-box-desc">삼겹살, 된장찌개, 편의점 도시락까지 — 한국 음식 기준 단백질·칼로리 정리</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTERS -->
+<div class="chapters">
+  <div class="chapters-inner">
+    <div class="chapters-header">
+      <div class="chapters-header-left">
+        <span class="section-label">Table of Contents</span>
+        <h2 class="chapters-title">12챕터,<br>혼자서도 되는 관리법.</h2>
+      </div>
+      <p class="chapters-subtitle">주사 맞는 날부터 약 끊은 후까지, 스스로 판단하고 관리할 수 있도록 순서대로 정리했어요.</p>
+    </div>
+
+    <div class="chapter-list">
+      <div class="chapter-item chapter-intro">
+        <div class="chapter-num">00</div>
+        <div class="chapter-content">
+          <div class="chapter-label">Introduction</div>
+          <div class="chapter-title">이 바이블을 읽기 전에</div>
+          <div class="chapter-desc">마운자로·위고비가 어떻게 작동하는지, 이 책에서 배울 것과 활용하는 방법</div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">01</div>
+        <div class="chapter-content">
+          <div class="chapter-label">Chapter 01</div>
+          <div class="chapter-title">복용 전 준비 — 뭘 알고 시작해야 할까</div>
+          <div class="chapter-desc">약이 몸에서 하는 일, 초기에 생길 수 있는 부작용, 미리 갖춰야 할 것들</div>
+          <div class="chapter-tags"><span class="chapter-tag">약물 기전</span><span class="chapter-tag">준비</span></div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">02</div>
+        <div class="chapter-content">
+          <div class="chapter-label">Chapter 02</div>
+          <div class="chapter-title">Phase 1 — 주사 맞고 아무것도 못 먹겠을 때</div>
+          <div class="chapter-desc">메스꺼움·구토 대처법, 먹을 수 없는 날 최소한으로 챙겨야 할 영양소, 굶으면 안 되는 이유</div>
+          <div class="chapter-tags"><span class="chapter-tag">부작용</span><span class="chapter-tag">초기 관리</span></div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">03</div>
+        <div class="chapter-content">
+          <div class="chapter-label">Chapter 03</div>
+          <div class="chapter-title">살만 빼고 근육은 지키는 식사법</div>
+          <div class="chapter-desc">단백질이 왜 중요한지, 하루 얼마나 먹어야 하는지, 한국 음식으로 어떻게 채우는지</div>
+          <div class="chapter-tags"><span class="chapter-tag">단백질</span><span class="chapter-tag">근육</span><span class="chapter-tag">식단</span></div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">04</div>
+        <div class="chapter-content">
+          <div class="chapter-label">Chapter 04</div>
+          <div class="chapter-title">Phase별 식단 — 단계마다 다르게 먹는 이유</div>
+          <div class="chapter-desc">복용 초기·중기·안정기에 따라 달라지는 식사 설계, 칼로리·단백질·탄수화물 비율</div>
+          <div class="chapter-tags"><span class="chapter-tag">Phase별</span><span class="chapter-tag">식단 설계</span></div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">05</div>
+        <div class="chapter-content">
+          <div class="chapter-label">Chapter 05</div>
+          <div class="chapter-title">한국 음식 데이터베이스</div>
+          <div class="chapter-desc">삼겹살·김밥·된장찌개·편의점 음식까지 — 단백질·칼로리 기준 먹어도 되는 것·피해야 할 것</div>
+          <div class="chapter-tags"><span class="chapter-tag">한국 음식</span><span class="chapter-tag">DB</span></div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">06</div>
+        <div class="chapter-content">
+          <div class="chapter-label">Chapter 06</div>
+          <div class="chapter-title">운동 — 복용 중에는 방정식이 달라져요</div>
+          <div class="chapter-desc">유산소보다 근력 운동이 먼저인 이유, 주 3일 루틴, 운동 못 하는 날 최소 전략</div>
+          <div class="chapter-tags"><span class="chapter-tag">운동</span><span class="chapter-tag">근력</span><span class="chapter-tag">루틴</span></div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">07</div>
+        <div class="chapter-content">
+          <div class="chapter-label">Chapter 07</div>
+          <div class="chapter-title">정체기 자가진단 — 5가지 원인 체크리스트</div>
+          <div class="chapter-desc">단백질·수면·스트레스·운동·칼로리 — 살이 안 빠질 때 내가 직접 원인을 찾는 법</div>
+          <div class="chapter-tags"><span class="chapter-tag">정체기</span><span class="chapter-tag">자가진단</span></div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">08</div>
+        <div class="chapter-content">
+          <div class="chapter-label">Chapter 08</div>
+          <div class="chapter-title">영양제 — 복용 중 챙겨야 할 것</div>
+          <div class="chapter-desc">단백질 외 필수 영양소, 복용 타이밍, 부작용 완화에 도움이 되는 것들</div>
+          <div class="chapter-tags"><span class="chapter-tag">영양제</span><span class="chapter-tag">부작용 완화</span></div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">09</div>
+        <div class="chapter-content">
+          <div class="chapter-label">Chapter 09</div>
+          <div class="chapter-title">수면·스트레스 — 살 빠지는 몸의 조건</div>
+          <div class="chapter-desc">코르티솔이 지방을 붙잡는 이유, 수면 부족이 감량을 방해하는 기전, 셀프 관리법</div>
+          <div class="chapter-tags"><span class="chapter-tag">수면</span><span class="chapter-tag">스트레스</span></div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">10</div>
+        <div class="chapter-content">
+          <div class="chapter-label">Chapter 10</div>
+          <div class="chapter-title">약 끊기 전 준비 — 이 3가지가 없으면 리바운드 와요</div>
+          <div class="chapter-desc">약 없이도 유지되는 몸을 만드는 3가지 조건, 중단 타이밍 판단 기준</div>
+          <div class="chapter-tags"><span class="chapter-tag">리바운드</span><span class="chapter-tag">중단 준비</span></div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">11</div>
+        <div class="chapter-content">
+          <div class="chapter-label">Chapter 11</div>
+          <div class="chapter-title">약 끊은 후 3개월 유지 플랜</div>
+          <div class="chapter-desc">중단 직후 변화 대응, 식사량 조정 방법, 3개월 체중 모니터링과 재증가 신호 파악</div>
+          <div class="chapter-tags"><span class="chapter-tag">유지</span><span class="chapter-tag">모니터링</span></div>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">12</div>
+        <div class="chapter-content">
+          <div class="chapter-label">Chapter 12</div>
+          <div class="chapter-title">약 없이 사는 몸 — 장기 자가 관리 시스템</div>
+          <div class="chapter-desc">복용 기간에 만든 습관을 이어가는 방법, 체중이 다시 늘기 시작할 때 대응 기준</div>
+          <div class="chapter-tags"><span class="chapter-tag">장기 유지</span><span class="chapter-tag">자가 관리</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <span class="bottom-cta-label">지금 바로 시작하세요</span>
+  <h2 class="bottom-cta-title">주사 맞기 시작했어요.<br>뭘 해야 할지 모르겠다면.</h2>
+  <p class="bottom-cta-desc">처음부터 끝까지 스스로 관리할 수 있는 가이드가 여기 있어요.</p>
+  <div class="bottom-price">19,000원</div>
+  <a href="index.html#consult" class="bottom-btn">구매 문의하기 →</a>
+  <p class="bottom-note">PDF 즉시 발송 · 1회 구매 · 업데이트 포함</p>
+</div>
+
+</body>
+</html>
