@@ -625,7 +625,7 @@
 
     /* ── 칼럼 ── */
     .columns-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
-    .column-card { display:block; background: var(--white); border: 1px solid var(--gray-100); border-radius: 16px; padding: 28px; transition: border-color 0.2s, transform 0.2s; text-decoration:none; cursor:pointer; }
+    .column-card { display:flex; flex-direction:column; background: var(--white); border: 1px solid var(--gray-100); border-radius: 16px; padding: 28px; transition: border-color 0.2s, transform 0.2s; text-decoration:none; cursor:pointer; }
     .column-card:hover { border-color: var(--gray-800); transform: translateY(-2px); }
     .column-card .column-title { color: var(--black); }
     .column-card .column-desc { color: var(--gray-600); }
@@ -633,7 +633,7 @@
     .column-title { font-size: 16px; font-weight: 800; line-height: 1.4; letter-spacing: -0.3px; margin-bottom: 10px; color: var(--black); }
     .column-desc { font-size: 13px; color: var(--gray-600); line-height: 1.65; margin-bottom: 20px; }
     .column-date { font-size: 12px; color: var(--gray-400); }
-    .column-read { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--black); margin-top: 16px; }
+    .column-read { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--black); margin-top: auto; padding-top: 16px; }
     .column-card:hover .column-read { text-decoration: underline; }
 
     /* ── FAQ ── */
@@ -1331,32 +1331,26 @@
       <p class="section-desc fade-up" style="color:rgba(255,255,255,0.5);">카톡 답장 하루 한 번, 식단 한 줄 피드백이 아닙니다.</p>
       <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px;">
         <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;" class="fade-up">
-          <div style="font-size:24px;margin-bottom:16px;">📋</div>
           <p style="font-size:15px;font-weight:800;color:var(--white);margin-bottom:8px;">매일 체크인</p>
           <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;">식단, 컨디션, 부작용 여부를 매일 확인합니다. 일주일 뒤에 아는 게 아니라 그날 바로 잡습니다.</p>
         </div>
         <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;" class="fade-up">
-          <div style="font-size:24px;margin-bottom:16px;">⚡</div>
           <p style="font-size:15px;font-weight:800;color:var(--white);margin-bottom:8px;">빠른 피드백</p>
           <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;">정체기, 식욕 변화, 부작용이 생기면 즉각 전략을 바꿉니다. 기다리는 동안 몸이 반응하지 않으면 늦습니다.</p>
         </div>
         <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;" class="fade-up">
-          <div style="font-size:24px;margin-bottom:16px;">🎥</div>
           <p style="font-size:15px;font-weight:800;color:var(--white);margin-bottom:8px;">운동 영상 분석</p>
           <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;">운동 영상을 직접 보고 자세와 강도를 분석합니다. 잘못된 자세로 하는 운동은 근손실을 오히려 가속시킵니다.</p>
         </div>
         <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;" class="fade-up">
-          <div style="font-size:24px;margin-bottom:16px;">💪</div>
           <p style="font-size:15px;font-weight:800;color:var(--white);margin-bottom:8px;">근손실 관리</p>
           <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;">마운자로·위고비 복용 중 빠지는 체중의 상당수는 근육입니다. 체지방만 빠지는 몸을 만드는 게 이 코칭의 핵심입니다.</p>
         </div>
         <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;" class="fade-up">
-          <div style="font-size:24px;margin-bottom:16px;">🍽️</div>
           <p style="font-size:15px;font-weight:800;color:var(--white);margin-bottom:8px;">식욕 대응 전략</p>
           <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;">약이 식욕을 줄여주는 타이밍과 패턴이 있습니다. 그 흐름에 맞게 먹는 방법을 그때그때 조정합니다.</p>
         </div>
         <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:28px;" class="fade-up">
-          <div style="font-size:24px;margin-bottom:16px;">🔄</div>
           <p style="font-size:15px;font-weight:800;color:var(--white);margin-bottom:8px;">리바운드 관리</p>
           <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;">약을 끊은 후를 코칭 시작부터 준비합니다. 주사 없이도 유지되는 몸의 패턴을 함께 만들어갑니다.</p>
         </div>
