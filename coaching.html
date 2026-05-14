@@ -39,7 +39,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-cta{display:inline-flex;align-items:center;background:var(--white);color:var(--black);font-size:14px;font-weight:800;padding:16px 36px;border-radius:50px;text-decoration:none;transition:opacity 0.2s}
 .hero-cta:hover{opacity:0.85}
 .hero-note{font-size:13px;color:rgba(255,255,255,0.3);margin-top:16px}
-.hero-stats{display:flex;gap:40px;padding-top:48px;border-top:1px solid rgba(255,255,255,0.08);margin-top:48px}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;padding-top:48px;border-top:1px solid rgba(255,255,255,0.08);margin-top:48px}
 .hero-stat-num{font-size:28px;font-weight:900;color:var(--white);letter-spacing:-1px;display:block}
 .hero-stat-label{font-size:12px;color:rgba(255,255,255,0.35);font-weight:600}
 
@@ -100,11 +100,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .bottom-btn:hover{opacity:0.85}
 .bottom-note{font-size:12px;color:rgba(255,255,255,0.25);margin-top:20px}
 
+@media(max-width:860px){
+  .nav-cta-hide-mobile{display:none}
+}
 @media(max-width:640px){
+  nav{padding:0 16px}
   .hero-inner,.why,.what-inner,.results,.why-me-inner{padding-left:24px;padding-right:24px}
   .diff-grid,.result-grid,.cred-grid{grid-template-columns:1fr}
-  nav{padding:0 20px}
   .why-me,.bottom-cta{padding:80px 24px}
+  .why-narrative,.reviews-section,.process-section,.pricing-section{padding:80px 24px !important}
+  .review-grid,.process-grid,.pricing-grid{grid-template-columns:1fr !important}
+  .hero-stats > div{min-width:calc(50% - 20px)}
 }
 </style>
 </head>
@@ -151,7 +157,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 </div>
 
 <!-- WHY DAILY MATTERS — narrative first -->
-<div style="background:var(--gray-50);padding:100px 48px;">
+<div class="why-narrative" style="background:var(--gray-50);padding:100px 48px;">
   <div style="max-width:760px;margin:0 auto;">
     <span class="section-label">Why Daily Matters</span>
     <h2 class="section-title" style="margin-top:16px">제가 매일<br>체크하는 이유</h2>
@@ -254,7 +260,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   <span class="section-label">Real Results · InBody 실측</span>
   <h2 class="section-title">숫자로 증명된<br>실제 케이스</h2>
   <p class="section-desc">체중이 아닌 체지방·골격근·내장지방 수치로 확인한 실제 코칭 결과입니다.</p>
-  <div class="result-grid" style="grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;display:grid">
+  <div class="result-grid">
     <div class="result-card">
       <div class="result-period">1개월 코칭</div>
       <div style="font-size:32px;font-weight:900;color:#16a34a;letter-spacing:-1px;margin:12px 0 4px">−5.8kg</div>
@@ -292,11 +298,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 </div>
 
 <!-- REVIEWS -->
-<div style="background:var(--gray-50);padding:100px 48px;">
+<div class="reviews-section" style="background:var(--gray-50);padding:100px 48px;">
   <div style="max-width:960px;margin:0 auto;">
     <span class="section-label">Reviews</span>
     <h2 class="section-title" style="margin-top:16px">직접 코칭 받은<br>분들의 이야기</h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;">
+    <div class="review-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px;">
       <div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;">
         <p style="font-size:14px;line-height:1.9;color:#333;margin-bottom:24px;">"주사만 맞으면 다 될 줄 알았는데 3주째 체중이 그대로였어요. 코칭 받고 나서야 내가 뭘 잘못하고 있었는지 알았어요. 지금은 매주 꾸준히 빠지고 있어요."</p>
         <div style="display:flex;align-items:center;gap:10px;">
@@ -332,11 +338,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 </div>
 
 <!-- PROCESS -->
-<div style="padding:100px 48px;">
+<div class="process-section" style="padding:100px 48px;">
   <div style="max-width:960px;margin:0 auto;">
     <span class="section-label">How It Works</span>
     <h2 class="section-title" style="margin-top:16px">코칭이<br>이렇게 진행돼요</h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px;">
+    <div class="process-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px;">
       <div style="padding:28px;background:#f9f9f9;border-radius:16px;">
         <div style="font-size:11px;font-weight:800;letter-spacing:0.1em;color:#16a34a;margin-bottom:16px;">STEP 01</div>
         <div style="font-size:16px;font-weight:900;color:#0a0a0a;margin-bottom:10px;letter-spacing:-0.3px;">카카오 무료 상담</div>
@@ -364,12 +370,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 
 <!-- PRICING -->
-<div style="padding:100px 48px;background:#fff;">
+<div class="pricing-section" style="padding:100px 48px;background:#fff;">
   <div style="max-width:760px;margin:0 auto;">
     <span class="section-label">Pricing</span>
     <h2 class="section-title" style="margin-top:16px">코칭 비용</h2>
     <p style="font-size:15px;color:#555;line-height:1.8;margin-bottom:48px;">기간이 길수록 몸이 바뀌는 폭이 달라요. 처음이라면 1개월부터, 확실한 변화를 원한다면 3개월을 권해드려요.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+    <div class="pricing-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
       <div style="border:1px solid #e0e0e0;border-radius:20px;padding:32px;position:relative;">
         <div style="font-size:12px;font-weight:700;color:#9e9e9e;letter-spacing:0.08em;margin-bottom:16px;">1개월</div>
         <div style="font-size:32px;font-weight:900;color:#0a0a0a;letter-spacing:-1.5px;margin-bottom:4px;">990,000<span style="font-size:16px;font-weight:600;">원</span></div>
