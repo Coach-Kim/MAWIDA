@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
@@ -631,6 +631,24 @@
     .book-arrow { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--black); flex-shrink: 0; transition: background 0.2s, border-color 0.2s; }
     .book-card:hover .book-arrow { background: var(--black); color: var(--white); border-color: var(--black); }
 
+    /* ── 서비스 카드 (컨설팅/코칭) ── */
+    .service-section { background: var(--white); }
+    .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 56px; }
+    .service-card { display: block; text-decoration: none; background: var(--white); border: 1px solid var(--gray-100); border-radius: 20px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+    .service-card:hover { border-color: var(--gray-400); transform: translateY(-3px); }
+    .service-cover { padding: 28px 28px 32px; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; min-height: 200px; }
+    .service-cover-top { display: flex; align-items: center; justify-content: space-between; }
+    .service-edition { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .service-num { font-size: 13px; font-weight: 800; color: rgba(255,255,255,0.25); letter-spacing: 0.06em; }
+    .service-accent { width: 28px; height: 3px; border-radius: 2px; background: rgba(255,255,255,0.2); margin-bottom: 20px; }
+    .service-title { font-size: clamp(20px, 2.8vw, 26px); font-weight: 900; color: var(--white); line-height: 1.25; letter-spacing: -0.5px; margin-bottom: 10px; }
+    .service-target { font-size: 12px; color: rgba(255,255,255,0.35); font-weight: 600; }
+    .service-footer { border-top: 1px solid var(--gray-100); padding: 18px 28px 22px; display: flex; align-items: center; justify-content: space-between; }
+    .service-price { font-size: 20px; font-weight: 900; letter-spacing: -0.5px; color: var(--black); }
+    .service-arrow { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--black); flex-shrink: 0; transition: background 0.2s, border-color 0.2s; }
+    .service-card:hover .service-arrow { background: var(--black); color: var(--white); border-color: var(--black); }
+    @media (max-width: 860px) { .service-grid { grid-template-columns: 1fr; } }
+
     /* ── 칼럼 ── */
     .columns-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
     .column-card { display:flex; flex-direction:column; background: var(--white); border: 1px solid var(--gray-100); border-radius: 16px; padding: 28px; transition: border-color 0.2s, transform 0.2s; text-decoration:none; cursor:pointer; }
@@ -643,6 +661,27 @@
     .column-date { font-size: 12px; color: var(--gray-400); }
     .column-read { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: var(--black); margin-top: auto; padding-top: 16px; }
     .column-card:hover .column-read { text-decoration: underline; }
+
+    /* ── 1:1 코칭 프리미엄 카드 ── */
+    .coaching-premium-section { background: var(--white); }
+    .coaching-premium-card { display: flex; align-items: center; justify-content: space-between; background: var(--gray-50); border: 1px solid var(--gray-100); border-radius: 20px; padding: 32px 36px; margin-top: 56px; text-decoration: none; transition: border-color 0.2s, transform 0.2s; gap: 24px; }
+    .coaching-premium-card:hover { border-color: var(--gray-400); transform: translateY(-2px); }
+    .coaching-premium-left { flex: 1; }
+    .coaching-premium-badge { display: inline-flex; align-items: center; background: var(--black); color: var(--white); font-size: 10px; font-weight: 800; letter-spacing: 0.08em; padding: 5px 14px; border-radius: 50px; margin-bottom: 16px; }
+    .coaching-premium-title { font-size: clamp(18px, 2.5vw, 24px); font-weight: 900; letter-spacing: -0.5px; color: var(--black); margin-bottom: 8px; line-height: 1.3; }
+    .coaching-premium-desc { font-size: 13px; color: var(--gray-600); line-height: 1.7; }
+    .coaching-premium-tags { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+    .coaching-premium-tag { font-size: 12px; font-weight: 600; color: var(--gray-600); background: var(--white); border: 1px solid var(--gray-200); padding: 6px 16px; border-radius: 50px; }
+    .coaching-premium-right { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+    .coaching-premium-price { text-align: right; }
+    .coaching-premium-price-label { font-size: 11px; color: var(--gray-400); font-weight: 600; margin-bottom: 4px; }
+    .coaching-premium-price-num { font-size: 22px; font-weight: 900; color: var(--black); letter-spacing: -0.5px; }
+    .coaching-premium-arrow { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--black); flex-shrink: 0; transition: background 0.2s, border-color 0.2s; }
+    .coaching-premium-card:hover .coaching-premium-arrow { background: var(--black); color: var(--white); border-color: var(--black); }
+    @media (max-width: 680px) {
+      .coaching-premium-card { flex-direction: column; align-items: flex-start; }
+      .coaching-premium-right { width: 100%; justify-content: space-between; }
+    }
 
     /* ── FAQ ── */
     .faq-section { background: var(--gray-50); }
@@ -803,10 +842,11 @@
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">마위다</a>
-    <div style="display:flex;align-items:center;gap:28px;">
+    <div style="display:flex;align-items:center;gap:20px;">
       <a href="#columns" style="font-size:13px;font-weight:600;color:var(--gray-600);text-decoration:none;">칼럼</a>
       <a href="#books" style="font-size:13px;font-weight:600;color:var(--gray-600);text-decoration:none;">전자책</a>
-      <a href="#consult" style="font-size:13px;font-weight:600;color:var(--gray-600);text-decoration:none;">상담신청</a>
+      <a href="consulting.html" style="font-size:13px;font-weight:600;color:var(--gray-600);text-decoration:none;">컨설팅</a>
+      <a href="coaching.html" style="font-size:13px;font-weight:600;color:var(--gray-600);text-decoration:none;">코칭</a>
       <a href="https://open.kakao.com/o/sQRqa7oi" target="_blank" class="nav-cta nav-cta-hide-mobile">무료 상담 받기</a>
     </div>
   </nav>
@@ -824,6 +864,13 @@
           지금 무료 상담 받기
         </a>
         <a href="#results" class="btn-secondary">실제 변화 보기</a>
+      </div>
+      <div class="fade-up" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:20px;">
+        <a href="book-user.html" style="font-size:12px;color:rgba(255,255,255,0.45);text-decoration:none;padding:6px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:50px;transition:border-color 0.2s;white-space:nowrap;">전자책 29,000원~</a>
+        <span style="color:rgba(255,255,255,0.15);font-size:12px;">·</span>
+        <a href="consulting.html" style="font-size:12px;color:rgba(255,255,255,0.45);text-decoration:none;padding:6px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:50px;transition:border-color 0.2s;white-space:nowrap;">분석 보고서 300,000원</a>
+        <span style="color:rgba(255,255,255,0.15);font-size:12px;">·</span>
+        <a href="coaching.html" style="font-size:12px;color:rgba(255,255,255,0.45);text-decoration:none;padding:6px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:50px;transition:border-color 0.2s;white-space:nowrap;">1:1 코칭 990,000원~/월</a>
       </div>
       <div class="hero-stats fade-up">
         <div style="width:100%;margin-bottom:20px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);">실제 코칭 케이스 — 최대 감량 결과 (InBody 실측)</div>
@@ -916,6 +963,55 @@
             <p class="diff-desc">주사를 끊는 순간이 진짜 시험입니다. 코칭 기간 내내 약 없이도 버티는 식습관과 몸의 패턴을 함께 만들어갑니다.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SERVICES -->
+  <section class="service-section" id="services">
+    <div class="section-inner">
+      <p class="section-tag fade-up">Service</p>
+      <h2 class="section-title fade-up">서비스</h2>
+      <p class="section-desc fade-up">전자책으로 시작하고, 필요에 따라 더 깊이 들어오세요.</p>
+      <div class="service-grid">
+
+        <a href="consulting.html" class="service-card fade-up">
+          <div class="service-cover" style="background:#1c1c2e;">
+            <div class="service-cover-top">
+              <span class="service-edition">1:1 Consulting</span>
+              <span class="service-num">03</span>
+            </div>
+            <div>
+              <div class="service-accent"></div>
+              <p class="service-title">맞춤 분석<br>보고서</p>
+              <p class="service-target">복용자 누구나 · PDF 보고서</p>
+            </div>
+          </div>
+          <div class="service-footer">
+            <span class="service-price">300,000원</span>
+            <div class="service-arrow">→</div>
+          </div>
+        </a>
+
+        <a href="coaching.html" class="service-card fade-up">
+          <div class="service-cover" style="background:#0d1f0d;">
+            <div class="service-cover-top">
+              <span class="service-edition">1:1 Coaching</span>
+              <span class="service-num">04</span>
+            </div>
+            <div>
+              <div class="service-accent"></div>
+              <p class="service-title">매일 케어<br>코칭</p>
+              <p class="service-target">카카오톡 문의</p>
+            </div>
+          </div>
+          <div class="service-footer">
+            <span class="service-price">990,000원~/월</span>
+            <div class="service-arrow">→</div>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
@@ -1445,6 +1541,7 @@
     </div>
   </section>
 
+
   <!-- FAQ -->
   <section class="faq-section" id="faq">
     <div class="section-inner">
@@ -1497,7 +1594,7 @@
             <span class="faq-q-text">코칭 비용은 얼마인가요?</span>
             <span class="faq-icon">+</span>
           </button>
-          <div class="faq-a">상담 후 안내드립니다. 한 가지 말씀드리면, 이 코칭은 매일 체크인, 즉각 피드백, 운동 영상 분석, 근손실 관리까지 포함된 고관여 프로그램입니다. 저렴한 코칭이 아니라, 제대로 된 결과를 만드는 코칭입니다. 비용이 부담되신다면 전자책으로 먼저 시작하시는 것도 방법입니다.</div>
+          <div class="faq-a">1개월 990,000원, 3개월 2,490,000원, 6개월 4,490,000원입니다. 결제는 카카오 상담 후 계좌이체로 진행됩니다. 매일 체크인·즉각 피드백·운동 영상 분석·근손실 관리까지 포함된 프로그램입니다.</div>
         </div>
 
       </div>
@@ -1589,7 +1686,8 @@
       <h2 style="font-size:20px;font-weight:900;margin-bottom:24px;">환불정책</h2>
       <p><strong>전자책 (디지털 상품)</strong><br>구매일로부터 <strong>30일 이내</strong> 다운로드 가능합니다.<br>디지털 콘텐츠 특성상 <strong>다운로드 완료 후 환불이 불가</strong>합니다.<br>구매 전 상품 설명을 충분히 확인해 주시기 바랍니다.</p><br>
       <p><strong>예외 환불 처리</strong><br>파일 오류 또는 결제 오류로 인한 경우에는 구매일로부터 7일 이내 카카오톡 채널로 문의 시 환불 처리해 드립니다.</p><br>
-      <p><strong>1:1 코칭 서비스</strong><br>코칭 서비스는 온라인 카드결제를 지원하지 않습니다. 카카오톡 채널로 문의 후 별도 안내에 따라 진행됩니다.</p><br>
+      <p><strong>1:1 맞춤 분석 보고서 (컨설팅)</strong><br>신청 폼 제출 후에는 분석 작업이 즉시 시작되므로 환불이 불가합니다.<br>파일 오류 등 발송 문제가 있는 경우 재발송 또는 환불 처리해 드립니다.</p><br>
+      <p><strong>1:1 코칭 서비스</strong><br>코칭 서비스는 온라인 카드결제를 지원하지 않으며, 카카오톡 문의 후 별도 안내에 따라 진행됩니다.<br>코칭 시작 전 취소 시 결제금액의 10% 수수료를 공제 후 환불합니다.<br>코칭 시작 후 취소 시 잔여 기간에 해당하는 금액의 10% 수수료를 공제 후 환불합니다.<br>(환불금액 = 총 금액 ÷ 계약 일수 × 잔여 일수 × 90%)</p><br>
       <p style="color:#888;font-size:12px;">문의: 카카오톡 채널 @마위다</p>
       <button onclick="document.getElementById('refund').style.display='none'" style="margin-top:16px;padding:12px 28px;background:#111;color:#fff;border:none;border-radius:50px;cursor:pointer;font-weight:700;">닫기</button>
     </div>

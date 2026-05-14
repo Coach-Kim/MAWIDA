@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1:1 맞춤 분석 보고서 | 마위다</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WFZTEHZR3P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WFZTEHZR3P');
+  </script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0a0a0a;--white:#fff;
+  --gray-50:#f9f9f9;--gray-100:#f0f0f0;--gray-200:#e0e0e0;
+  --gray-400:#9e9e9e;--gray-600:#555;--gray-800:#222;
+  --accent:#a78bfa;
+}
+body{font-family:'Apple SD Gothic Neo','Noto Sans KR',-apple-system,sans-serif;background:var(--white);color:var(--black);line-height:1.7;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:60px;background:rgba(10,10,10,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-logo{font-size:18px;font-weight:900;letter-spacing:-0.5px;color:var(--white);text-decoration:none}
+.nav-cta{display:inline-flex;align-items:center;background:#fff;color:#0a0a0a;font-size:13px;font-weight:700;padding:9px 20px;border-radius:50px;text-decoration:none;transition:opacity 0.2s}
+.nav-cta:hover{opacity:0.8}
+.nav-cta-hide-mobile{display:inline-flex}
+.back-link{font-size:13px;font-weight:600;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s}
+.back-link:hover{color:var(--white)}
+
+/* HERO */
+.hero{background:#1c1c2e;min-height:100vh;display:flex;align-items:flex-end;padding:80px 0 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 30% 40%,rgba(167,139,250,0.1) 0%,transparent 70%)}
+.hero-inner{max-width:960px;margin:0 auto;padding:0 48px;width:100%}
+.hero-badge{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:block}
+.hero-title{font-size:clamp(36px,5.5vw,64px);font-weight:900;color:var(--white);line-height:1.1;letter-spacing:-2px;margin-bottom:24px}
+.hero-desc{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.8;max-width:500px;margin-bottom:48px}
+.hero-bottom{display:flex;align-items:center;gap:32px;flex-wrap:wrap}
+.hero-price-label{font-size:12px;color:rgba(255,255,255,0.35);font-weight:600;margin-bottom:4px}
+.hero-price{font-size:36px;font-weight:900;color:var(--white);letter-spacing:-1px}
+.hero-cta{background:var(--white);color:var(--black);font-size:14px;font-weight:800;padding:16px 36px;border-radius:50px;text-decoration:none;transition:opacity 0.2s}
+.hero-cta:hover{opacity:0.85}
+.hero-stats{display:flex;gap:40px;padding-top:48px;border-top:1px solid rgba(255,255,255,0.08);margin-top:48px}
+.hero-stat-num{font-size:28px;font-weight:900;color:var(--white);letter-spacing:-1px;display:block}
+.hero-stat-label{font-size:12px;color:rgba(255,255,255,0.35);font-weight:600}
+
+/* WHY */
+.why{padding:100px 48px;max-width:960px;margin:0 auto}
+.section-label{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-400);margin-bottom:20px;display:block}
+.section-title{font-size:clamp(24px,3.5vw,36px);font-weight:900;line-height:1.25;letter-spacing:-1px;margin-bottom:24px}
+.section-desc{font-size:16px;color:var(--gray-600);line-height:1.9;max-width:600px}
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px}
+.pain-card{background:var(--gray-50);border:1px solid var(--gray-100);border-radius:16px;padding:28px}
+.pain-q{font-size:16px;font-weight:800;color:var(--black);margin-bottom:10px;line-height:1.4;letter-spacing:-0.3px}
+.pain-a{font-size:13px;color:var(--gray-600);line-height:1.7}
+
+/* WHAT */
+.what{background:var(--gray-50);padding:100px 0}
+.what-inner{max-width:960px;margin:0 auto;padding:0 48px}
+.report-list{display:flex;flex-direction:column;gap:0;margin-top:48px}
+.report-item{display:flex;align-items:flex-start;gap:24px;padding:28px 0;border-bottom:1px solid var(--gray-100)}
+.report-item:first-child{border-top:1px solid var(--gray-100)}
+.report-num{width:48px;height:48px;border-radius:12px;background:var(--black);color:var(--white);font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.report-content{flex:1}
+.report-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px}
+.report-title{font-size:16px;font-weight:800;color:var(--black);margin-bottom:4px;letter-spacing:-0.3px}
+.report-desc{font-size:13px;color:var(--gray-600);line-height:1.6}
+
+/* WHY ME */
+.why-me{padding:100px 48px;max-width:960px;margin:0 auto}
+.cred-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.cred-box{background:var(--gray-50);border:1px solid var(--gray-100);border-radius:16px;padding:24px}
+.cred-num{font-size:24px;font-weight:900;color:var(--black);letter-spacing:-1px;display:block;margin-bottom:6px}
+.cred-label{font-size:12px;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
+.cred-desc{font-size:13px;color:var(--gray-600);line-height:1.6}
+
+/* PROCESS */
+.process{background:#1c1c2e;padding:100px 48px}
+.process-inner{max-width:960px;margin:0 auto}
+.process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.process-step{padding:32px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:20px}
+.process-step-num{font-size:12px;font-weight:800;letter-spacing:0.1em;color:var(--accent);margin-bottom:16px}
+.process-step-title{font-size:18px;font-weight:900;color:var(--white);margin-bottom:10px;letter-spacing:-0.3px}
+.process-step-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7}
+
+/* BOTTOM CTA */
+.bottom-cta{background:#1c1c2e;padding:100px 48px;text-align:center;border-top:1px solid rgba(255,255,255,0.06)}
+.bottom-cta-label{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:20px;display:block}
+.bottom-cta-title{font-size:clamp(28px,4vw,44px);font-weight:900;color:var(--white);letter-spacing:-1.5px;line-height:1.2;margin-bottom:16px}
+.bottom-cta-desc{font-size:15px;color:rgba(255,255,255,0.4);margin-bottom:48px}
+.bottom-price{font-size:44px;font-weight:900;color:var(--white);letter-spacing:-2px;margin-bottom:36px}
+.bottom-btn{display:inline-block;background:var(--white);color:var(--black);font-size:15px;font-weight:800;padding:18px 48px;border-radius:50px;text-decoration:none;transition:opacity 0.2s}
+.bottom-btn:hover{opacity:0.85}
+.bottom-note{font-size:12px;color:rgba(255,255,255,0.25);margin-top:20px}
+
+@media(max-width:860px){
+  .nav-cta-hide-mobile{display:none}
+}
+@media(max-width:640px){
+  .hero-inner,.why,.why-me,.what-inner,.process-inner{padding-left:24px;padding-right:24px}
+  .pain-grid,.cred-grid,.process-steps{grid-template-columns:1fr}
+  nav{padding:0 20px}
+  .process{padding:80px 24px}
+  .bottom-cta{padding:80px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">마위다</a>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <a href="index.html#columns" style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;">칼럼</a>
+    <a href="index.html#books" style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;">전자책</a>
+    <a href="consulting.html" style="font-size:13px;font-weight:600;color:#fff;text-decoration:none;">컨설팅</a>
+    <a href="coaching.html" style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.7);text-decoration:none;">코칭</a>
+    <a href="https://open.kakao.com/o/sQRqa7oi" target="_blank" class="nav-cta nav-cta-hide-mobile">무료 상담 받기</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <span class="hero-badge">1:1 Personalized Report · 맞춤 분석 보고서</span>
+    <h1 class="hero-title">지금 뭐가 문제인지,<br>뭘 해야 하는지.<br>보고서로 드립니다.</h1>
+    <p class="hero-desc">현재 상황을 직접 분석해서 내 몸에 맞는 방향을 정리해드려요. 인터넷에서 찾은 일반적인 답이 아니라, 지금 나한테 맞는 답이요.</p>
+    <div class="hero-bottom">
+      <div>
+        <div class="hero-price-label">1회 분석 보고서</div>
+        <div class="hero-price">300,000원</div>
+      </div>
+      <a href="https://open.kakao.com/o/sQRqa7oi" target="_blank" class="hero-cta">카카오로 신청하기 →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="hero-stat-num">20p+</span>
+        <span class="hero-stat-label">보고서 분량</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">48h</span>
+        <span class="hero-stat-label">이내 발송</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">1:1</span>
+        <span class="hero-stat-label">코치 직접 분석</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">PDF</span>
+        <span class="hero-stat-label">맞춤 보고서</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY YOU NEED THIS -->
+<div class="why">
+  <span class="section-label">Why You Need This</span>
+  <h2 class="section-title">이런 상황이라면<br>지금 이게 필요해요</h2>
+  <p class="section-desc">마운자로·위고비를 맞고 있는데도 결과가 안 나오는 데는 이유가 있어요. 병원은 주사만 놓고, 인터넷 정보는 내 상황과 맞지 않아요.</p>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <p class="pain-q">"몇 달째 맞고 있는데 생각보다 안 빠져요"</p>
+      <p class="pain-a">복용량과 기간 대비 결과가 낮다면 이유가 있어요. 식습관·수면·운동 중 어디서 막히는지 분석이 먼저예요.</p>
+    </div>
+    <div class="pain-card">
+      <p class="pain-q">"정체기인지, 약이 안 듣는 건지 모르겠어요"</p>
+      <p class="pain-a">정체기와 내성은 완전히 다르고, 대응법도 달라요. 잘못된 판단으로 용량 올리면 오히려 역효과예요.</p>
+    </div>
+    <div class="pain-card">
+      <p class="pain-q">"체중은 빠지는데 InBody가 걱정돼요"</p>
+      <p class="pain-a">체중이 줄어도 근육이 같이 빠지고 있을 수 있어요. 지금 상태가 좋은 방향인지 나쁜 방향인지 판단해드려요.</p>
+    </div>
+    <div class="pain-card">
+      <p class="pain-q">"약 끊을 준비가 됐는지 모르겠어요"</p>
+      <p class="pain-a">끊는 타이밍을 잘못 잡으면 리바운드로 이어져요. 지금 상태에서 끊어도 되는지 직접 판단해드려요.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT'S IN THE REPORT -->
+<div class="what">
+  <div class="what-inner">
+    <span class="section-label">Report Contents</span>
+    <h2 class="section-title">보고서 안에<br>이게 들어가요</h2>
+    <div class="report-list">
+      <div class="report-item">
+        <div class="report-num">01</div>
+        <div class="report-content">
+          <div class="report-label">Current State Analysis</div>
+          <div class="report-title">현재 상태 분석</div>
+          <div class="report-desc">복용 기간·용량 대비 체중 변화 패턴 분석, InBody 수치 해석, 지금 몸이 어떤 상태인지 정리</div>
+        </div>
+      </div>
+      <div class="report-item">
+        <div class="report-num">02</div>
+        <div class="report-content">
+          <div class="report-label">Problem Diagnosis</div>
+          <div class="report-title">원인 진단</div>
+          <div class="report-desc">왜 안 빠지는지, 뭐가 막히고 있는지 — 식습관·수면·운동·스트레스 중 핵심 원인 짚어드려요</div>
+        </div>
+      </div>
+      <div class="report-item">
+        <div class="report-num">03</div>
+        <div class="report-content">
+          <div class="report-label">Personalized Diet Direction</div>
+          <div class="report-title">맞춤 식단 방향</div>
+          <div class="report-desc">지금 내 식사 패턴 기반으로 뭘 바꿔야 하는지, 단백질·칼로리 목표, 실제 먹을 수 있는 음식 기준</div>
+        </div>
+      </div>
+      <div class="report-item">
+        <div class="report-num">04</div>
+        <div class="report-content">
+          <div class="report-label">Exercise Strategy</div>
+          <div class="report-title">운동 전략</div>
+          <div class="report-desc">지금 상태와 체력 수준에 맞는 운동 방향, 근손실 막는 최소 전략, 운동 타이밍과 강도</div>
+        </div>
+      </div>
+      <div class="report-item">
+        <div class="report-num">05</div>
+        <div class="report-content">
+          <div class="report-label">Next Step Guide</div>
+          <div class="report-title">다음 단계 가이드</div>
+          <div class="report-desc">지금 상태에서 앞으로 뭘 해야 하는지 — 용량 유지·조정, 약 중단 준비 여부, 우선순위 액션 리스트</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- WHY I BUILT THIS -->
+<div style="background:#f9f9f9;padding:100px 48px;">
+  <div style="max-width:760px;margin:0 auto;">
+    <span class="section-label">Why This Report Exists</span>
+    <h2 class="section-title" style="margin-top:16px">이 보고서를<br>만든 이유</h2>
+    <p style="font-size:17px;line-height:2;color:#333;margin-top:32px;">상담을 받다 보면 공통적으로 하는 말이 있어요.</p>
+    <p style="font-size:17px;line-height:2;color:#333;margin-bottom:32px;"><strong>"인터넷 다 찾아봤는데, 내 상황이랑 맞는 게 없어요."</strong></p>
+    <p style="font-size:16px;line-height:2;color:#555;margin-bottom:24px;">마운자로·위고비 정보는 넘쳐나는데, 지금 내 몸에 뭐가 문제인지 딱 짚어주는 사람이 없는 거예요. 체중이 안 빠지는 이유가 식단인지, 운동인지, 복용 타이밍인지, 아니면 아예 다른 문제인지 — 누군가 직접 봐줘야 알 수 있는 건데.</p>
+    <p style="font-size:16px;line-height:2;color:#555;margin-bottom:24px;">15년 동안 수천 명을 코칭하면서 제가 가장 많이 한 일은 "뭘 해야 하는지"를 알려주는 게 아니었어요. <strong>지금 당신한테 뭐가 문제인지를 찾아주는 것</strong>이었어요.</p>
+    <p style="font-size:16px;line-height:2;color:#555;">일반적인 답이 아니라, 지금 이 사람에게 맞는 답. 그게 이 보고서를 만든 이유입니다.</p>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="process">
+  <div class="process-inner">
+    <span class="section-label" style="color:rgba(255,255,255,0.3)">How It Works</span>
+    <h2 class="section-title" style="color:var(--white);margin-top:16px">신청하면<br>이렇게 진행돼요</h2>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-num">STEP 01</div>
+        <div class="process-step-title">상황 폼 제출</div>
+        <div class="process-step-desc">카카오톡으로 신청하시면 현재 상황 폼을 드려요. 복용량·기간·체중 변화·식단·InBody·부작용 등을 작성해주세요</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">STEP 02</div>
+        <div class="process-step-title">코치 1:1 분석</div>
+        <div class="process-step-desc">작성해주신 내용을 바탕으로 코치가 직접 분석해요. AI 자동화 없이, 사람이 직접 읽고 판단해요</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">STEP 03</div>
+        <div class="process-step-title">PDF 보고서 발송</div>
+        <div class="process-step-desc">48시간 이내 카카오톡으로 보고서를 발송해드려요. 궁금한 점은 1회 추가 질문까지 답변드려요</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <span class="bottom-cta-label">지금 신청하세요</span>
+  <h2 class="bottom-cta-title">한 번 제대로 정리받으면<br>방향이 보여요.</h2>
+  <p class="bottom-cta-desc">막막할 때 가장 빠른 방법은, 아는 사람한테 직접 물어보는 거예요.</p>
+  <div class="bottom-price">300,000원</div>
+  <a href="https://open.kakao.com/o/sQRqa7oi" target="_blank" class="bottom-btn">카카오로 신청하기 →</a>
+  <p class="bottom-note">48시간 이내 PDF 발송 · 1회 추가 질문 포함</p>
+</div>
+
+</body>
+</html>
